@@ -30,6 +30,7 @@
     --border-radius-xs: 8px;
 }
 
+
 /* === Reset & Base === */
 * {
     margin: 0;
@@ -354,31 +355,7 @@ section {
 }
 
 /* === Hero Geometric Morphing Shape === */
-.hero-geometric {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-}
 
-.morph-shape {
-    width: 60px;
-    height: 60px;
-    color: var(--gold);
-    opacity: 0.6;
-}
-
-.morph-shape svg {
-    width: 100%;
-    height: 100%;
-}
-
-.morph-path {
-    stroke: var(--gold);
-    stroke-width: 1.5;
-    fill: none;
-    filter: drop-shadow(0 0 8px var(--gold-glow));
-}
 
 /* === About Section === */
 .about-section {
@@ -1140,7 +1117,7 @@ button.project-link:hover {
     }
 
     .profile-placeholder {
-        width: 250px !important; /* Taille imposée pour mobile */
+        width: 200px !important; /* Taille imposée pour mobile */
         height: 320px !important;
         margin: 0 auto;
         filter: grayscale(30%);
@@ -1173,4 +1150,5 @@ button.project-link:hover {
         transform: translateY(-2px);
         box-shadow: 0 0 30px var(--gold-glow);
     }
+     
 }

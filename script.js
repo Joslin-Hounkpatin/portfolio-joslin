@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollReveal();
     initNavbarScroll();
     initSmoothScroll();
-    initMorphingShape();
     initActiveNavHighlight();
     initModalVideo();
 
@@ -58,20 +57,7 @@ function initSmoothScroll() {
     });
 }
 
-function initMorphingShape() {
-    const path = document.querySelector('.morph-path');
-    if (!path) return;
-    const shapes = [
-        'M50,15 L85,75 L15,75 Z',
-        'M50,10 L90,50 L50,90 L10,50 Z',
-        'M50,10 L90,40 L75,85 L25,85 L10,40 Z'
-    ];
-    let i = 0;
-    setInterval(() => {
-        i = (i + 1) % shapes.length;
-        path.setAttribute('d', shapes[i]);
-    }, 2500);
-}
+
 
 function initActiveNavHighlight() {
     const sections = document.querySelectorAll('section[id]');
