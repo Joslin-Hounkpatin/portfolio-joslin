@@ -133,17 +133,23 @@ function initScrollReveal() {
     
     if (!revealElements.length) return;
     
+    // On ajuste le seuil : 0.05 (5%) est plus sensible pour le mobile
     const observerOptions = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.1
+        rootMargin: '0px 0px -50px 0px', // Déclenche l'effet 50px avant que l'élément n'entre totalement
+        threshold: 0.05 
     };
     
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                // Unobserve after revealing to prevent re-triggering
+                // On ajoute un léger délai sur mobile pour laisser le processeur respirer
+                const delay = window.innerWidth < 992 ? 100 : 0;
+                
+                setTimeout(() => {
+                    entry.target.classList.add('revealed');
+                }, delay);
+                
                 observer.unobserve(entry.target);
             }
         });

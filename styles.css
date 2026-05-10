@@ -1126,3 +1126,18 @@ button.project-link:hover {
         justify-content: center;
     }
 }
+@media (max-width: 991px) {
+    /* On réduit la distance de remontée pour que l'effet soit plus fluide sur petit écran */
+    .reveal-fade {
+        transform: translateY(15px); /* Au lieu de 30px */
+        transition: opacity 0.8s ease, transform 0.8s ease; /* Transition légèrement plus lente pour la douceur */
+    }
+
+    /* On s'assure que si l'utilisateur a désactivé les animations (mode économie), ça s'affiche quand même */
+    @media (prefers-reduced-motion: reduce) {
+        .reveal-fade {
+            opacity: 1;
+            transform: none;
+        }
+    }
+}
