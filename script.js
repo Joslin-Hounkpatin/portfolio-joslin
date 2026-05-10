@@ -158,7 +158,24 @@ function initScrollReveal() {
     revealElements.forEach(element => {
         revealObserver.observe(element);
     });
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            
+            // SPECIAL MOBILE: Active l'éclat doré automatiquement au passage
+            if (window.innerWidth < 992) {
+                entry.target.style.borderColor = "rgba(255, 215, 0, 0.5)";
+                entry.target.style.boxShadow = "0 0 15px rgba(255, 215, 0, 0.1)";
+            }
+            
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
 }
+
 
 /**
  * Navbar Background Change on Scroll

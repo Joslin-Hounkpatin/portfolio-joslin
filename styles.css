@@ -1141,3 +1141,55 @@ button.project-link:hover {
         }
     }
 }
+@media (max-width: 991px) {
+    .hero-section {
+        padding-top: 60px; /* Moins d'espace en haut */
+        min-height: auto;  /* Évite de pousser le contenu trop bas */
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        line-height: 1.1;
+        margin-bottom: 20px;
+    }
+
+    .hero-tagline {
+        margin: 0 auto 30px;
+    }
+
+    .hero-image {
+        margin-top: 40px; /* Espace entre le texte et la photo */
+        display: flex;
+        justify-content: center;
+    }
+
+    .profile-placeholder {
+        width: 220px; /* Taille plus adaptée sur mobile */
+        height: 280px;
+        margin-left: 0; /* Centre la photo */
+        filter: grayscale(40%); /* Moins agressif que 100% */
+        border: 1px solid var(--gold-dark);
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+    }
+    
+    /* Animation automatique au scroll pour mobile (puisqu'on n'a pas de hover) */
+    .reveal-fade.revealed.island-card {
+        border-color: rgba(255, 215, 0, 0.4); /* Une légère lueur dorée automatique */
+    }
+}
+
+@media (hover: hover) {
+    .island-card:hover {
+        border-color: var(--gold);
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--gold-glow);
+    }
+    .island-card:hover::before {
+        opacity: 1;
+    }
+    .btn-cv:hover, .btn-primary-gold:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 40px var(--gold-glow);
+    }
+}
