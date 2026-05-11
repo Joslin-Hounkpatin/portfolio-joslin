@@ -16,7 +16,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initScrollReveal() {
     const revealElements = document.querySelectorAll('.reveal-fade');
-    const observerOptions = { threshold: 0.05, rootMargin: '0px 0px -50px 0px' };
+    const observerOptions = {
+    root: null,
+    // -10px sur mobile (déclenchement rapide), -50px sur ordi (déclenchement élégant)
+    rootMargin: window.innerWidth < 768 ? '0px 0px -10px 0px' : '0px 0px -50px 0px', 
+    threshold: 0.1 
+};
 
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

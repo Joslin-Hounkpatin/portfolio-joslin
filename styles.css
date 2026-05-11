@@ -928,7 +928,11 @@ section {
 .reveal-fade {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+    will-change: opacity, transform; 
+    /* Optimisation mobile */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .reveal-fade.revealed {
@@ -1151,4 +1155,44 @@ button.project-link:hover {
         box-shadow: 0 0 30px var(--gold-glow);
     }
      
+}
+@media (hover: hover) {
+    /* On ne met ici que les effets qui brillent ou bougent au survol */
+    
+    .island-card:hover {
+        border-color: var(--gold);
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--gold-glow);
+    }
+    .island-card:hover::before {
+        opacity: 1;
+    }
+    .island-card-light:hover {
+        border-color: var(--gold);
+        background: var(--black-card);
+        box-shadow: 0 0 25px var(--gold-glow);
+    }
+    .timeline-item:hover .timeline-dot {
+        background: var(--gold);
+        box-shadow: 0 0 25px var(--gold-glow);
+        transform: scale(1.2);
+    }
+    .btn-cv:hover, .btn-primary-gold:hover {
+        background: var(--gold-light);
+        color: var(--black);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 40px var(--gold-glow);
+    }
+    .project-card:hover .project-placeholder i {
+        color: var(--gold);
+        transform: scale(1.1);
+    }
+}
+a, button, .island-card, .contact-link {
+    touch-action: manipulation;
+}
+
+/* Optionnel : Empêche le zoom automatique sur les champs de texte si tu en ajoutes plus tard */
+input, textarea {
+    font-size: 16px !important;
 }
