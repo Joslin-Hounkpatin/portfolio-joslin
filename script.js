@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Lancement des fonctions
+    
     initScrollReveal();
     initNavbarScroll();
     initSmoothScroll();
     initActiveNavHighlight();
     initModalVideo();
 
-    // 2. Sécurité : Si après 2s rien n'est apparu, on force l'affichage
+    
     setTimeout(() => {
         document.querySelectorAll('.reveal-fade').forEach(el => {
             if (!el.classList.contains('revealed')) el.classList.add('revealed');
@@ -18,7 +18,7 @@ function initScrollReveal() {
     const revealElements = document.querySelectorAll('.reveal-fade');
     const observerOptions = {
     root: null,
-    // -10px sur mobile (déclenchement rapide), -50px sur ordi (déclenchement élégant)
+   
     rootMargin: window.innerWidth < 768 ? '0px 0px -10px 0px' : '0px 0px -50px 0px', 
     threshold: 0.1 
 };
@@ -27,7 +27,7 @@ function initScrollReveal() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('revealed');
-                // Effet spécial mobile automatique
+         
                 if (window.innerWidth < 992 && entry.target.classList.contains('island-card')) {
                     entry.target.style.borderColor = "rgba(255, 215, 0, 0.5)";
                 }

@@ -1,10 +1,4 @@
-/* ============================================
-   JOSLIN HOUNKPATIN - PREMIUM PORTFOLIO
-   Dark Theme with Vibrant Gold Accents
-   Fonts: Bellezza (Titles) + EB Garamond (Body)
-   ============================================ */
 
-/* === CSS Variables === */
 :root {
     --black: #0a0a0a;
     --black-light: #111111;
@@ -31,7 +25,7 @@
 }
 
 
-/* === Reset & Base === */
+
 * {
     margin: 0;
     padding: 0;
@@ -51,7 +45,7 @@ body {
     overflow-x: hidden;
 }
 
-/* === Typography === */
+
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-title);
     font-weight: 400;
@@ -72,7 +66,6 @@ img {
     height: auto;
 }
 
-/* === Island Card System === */
 .island-card {
     background: var(--black-card);
     border: 1px solid var(--gray-800);
@@ -119,7 +112,7 @@ img {
     box-shadow: 0 0 25px var(--gold-glow);
 }
 
-/* === Section Styles === */
+
 section {
     padding: 120px 0;
 }
@@ -146,7 +139,7 @@ section {
     color: var(--white);
 }
 
-/* === Navigation === */
+
 .glass-nav {
     background: rgba(10, 10, 10, 0.85);
     backdrop-filter: blur(20px);
@@ -247,7 +240,6 @@ section {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 215, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* === Hero Section === */
 .hero-section {
     min-height: 100vh;
     display: flex;
@@ -336,7 +328,7 @@ section {
 .project-placeholder img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* L'image remplit l'espace sans se déformer */
+    object-fit: cover;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
@@ -354,10 +346,10 @@ section {
     text-transform: uppercase;
 }
 
-/* === Hero Geometric Morphing Shape === */
 
 
-/* === About Section === */
+
+
 .about-section {
     background: var(--black-light);
 }
@@ -400,7 +392,7 @@ section {
     letter-spacing: 1px;
 }
 
-/* === Services Section === */
+
 .services-section {
     background: var(--black);
 }
@@ -476,11 +468,11 @@ section {
 }
 
 .project-title {
-    line-height: 1.3; /* Pour que le titre long reste lisible */
+    line-height: 1.3; 
     margin-bottom: 15px;
 }
 
-/* === Timeline / Parcours Section === */
+
 .parcours-section {
     background: var(--black-light);
 }
@@ -611,7 +603,7 @@ section {
     border-radius: var(--border-radius-xs);
 }
 
-/* === Realisations Section === */
+
 .realisations-section {
     background: var(--black);
 }
@@ -693,7 +685,7 @@ section {
     color: var(--white-muted);
 }
 
-/* === Projects Section === */
+
 .projects-section {
     background: var(--black-light);
 }
@@ -788,7 +780,7 @@ section {
     transform: translateX(5px);
 }
 
-/* Work In Progress Card */
+
 .project-wip {
     position: relative;
     overflow: hidden;
@@ -841,7 +833,7 @@ section {
     border-radius: var(--border-radius-xs);
 }
 
-/* === Contact Section === */
+
 .contact-section {
     background: var(--black);
     padding: 120px 0 60px;
@@ -924,7 +916,7 @@ section {
     text-shadow: 0 0 15px var(--gold-glow);
 }
 
-/* === Animations === */
+
 .reveal-fade {
     opacity: 0;
     transform: translateY(30px);
@@ -940,13 +932,13 @@ section {
     transform: translateY(0);
 }
 
-/* Staggered animations for children */
+
 .reveal-fade:nth-child(1) { transition-delay: 0s; }
 .reveal-fade:nth-child(2) { transition-delay: 0.1s; }
 .reveal-fade:nth-child(3) { transition-delay: 0.2s; }
 .reveal-fade:nth-child(4) { transition-delay: 0.3s; }
 
-/* === Responsive === */
+
 @media (max-width: 991px) {
     section {
         padding: 80px 0;
@@ -1035,7 +1027,7 @@ section {
     }
 }
 
-/* === Selection === */
+
 ::selection {
     background: var(--gold);
     color: var(--black);
@@ -1046,7 +1038,7 @@ section {
     color: var(--black);
 }
 
-/* === Scrollbar === */
+
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -1071,7 +1063,7 @@ button.project-link:hover {
 }
 
 .modal-xl {
-    max-width: 1000px; /* Taille optimale pour le lecteur vidéo */
+    max-width: 1000px; 
 }
 
 .btn-close-white {
@@ -1121,7 +1113,7 @@ button.project-link:hover {
     }
 
     .profile-placeholder {
-        width: 200px !important; /* Taille imposée pour mobile */
+        width: 200px !important; 
         height: 320px !important;
         margin: 0 auto;
         filter: grayscale(30%);
@@ -1142,7 +1134,7 @@ button.project-link:hover {
     }
 }
 
-/* === REGLAGES CLIC (PC UNIQUEMENT) === */
+
 @media (hover: hover) {
     .island-card:hover {
         border-color: var(--gold);
@@ -1157,7 +1149,7 @@ button.project-link:hover {
      
 }
 @media (hover: hover) {
-    /* On ne met ici que les effets qui brillent ou bougent au survol */
+    
     
     .island-card:hover {
         border-color: var(--gold);
@@ -1192,7 +1184,7 @@ a, button, .island-card, .contact-link {
     touch-action: manipulation;
 }
 
-/* Optionnel : Empêche le zoom automatique sur les champs de texte si tu en ajoutes plus tard */
+
 input, textarea {
     font-size: 16px !important;
 }
