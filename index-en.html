@@ -39,9 +39,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#parcours">Experience</a>
                     </li>
+                     <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
+                        <a class="nav-link" href="#projets-tech">Projects</a>
                     </li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
@@ -66,34 +68,63 @@
 
    
     <section id="hero" class="hero-section">
-        <div class="container">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-7">
-                    <div class="hero-content">
-                        <p class="hero-subtitle reveal-fade">Digital Project Manager | AI & Digital Transformation</p>
-                        <h1 class="hero-title reveal-fade">Joslin<br>Hounkpatin</h1>
-                        <p class="hero-tagline reveal-fade">The interpreter between Business Vision and Technical Reality.</p>
-                        <a href="#projects" class="btn btn-primary-gold reveal-fade">Explore my work</a>
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <!-- COLONNE GAUCHE (TEXTE) -->
+            <div class="col-lg-7">
+                <div class="hero-content">
+                    <p class="hero-subtitle reveal-fade">Digital Project Manager | AI & Digital Transformation</p>
+                    <h1 class="hero-title reveal-fade">Joslin<br>Hounkpatin</h1>
+                    <p class="hero-tagline reveal-fade">The Bridge between Business Vision and Technical Reality</p>
+                    <a href="#projets-tech" class="btn btn-primary-gold reveal-fade">Explore my work</a>
+
+                    <!-- BADGES VERSION DESKTOP (Cachés sur mobile : d-none d-lg-block) -->
+                    <div class="hero-badges mt-5 reveal-fade d-none d-lg-block" style="transition-delay: 0.5s;">
+                        <p class="badge-label">certified technical expertise</p>
+                        <div class="d-flex gap-4 align-items-center">
+                            <a href="https://www.credly.com/badges/c8b4ada4-33bf-41fb-b19e-e5e076218dd8/public_url" target="_blank" title="Vérifier certification Cybersécurité">
+                                <img src="introduction-to-cybersecurity.png" alt="Cybersecurity Certified" class="hero-badge-img">
+                            </a>
+                            <a href="https://www.credly.com/badges/ca3eb82a-da60-4e69-b29b-fb1faf2855a1/public_url" target="_blank" title="Vérifier certification Python">
+                                <img src="python-essentials-1.1.png" alt="Python Institute Certified" class="hero-badge-img">
+                            </a>
+                            <div class="hero-badge-divider"></div>
+                            <span class="small italic text-muted-custom">Cybersecurity & <br>Software Foundations</span>
+                        </div>
                     </div>
                 </div>
-               <div class="col-lg-5 col-md-12"> 
-    <div class="hero-image reveal-fade">
-        <div class="profile-placeholder">
-            <img src="Photo Portfolio.png" alt="Joslin Hounkpatin">
+            </div>
+
+           <!-- COLONNE DROITE : PHOTO + BADGES MOBILE -->
+<div class="col-lg-5 col-md-12 mt-2 mt-lg-0">
+    <div class="hero-image-container d-flex flex-column align-items-center">
+        <!-- La Photo -->
+        <div class="hero-image reveal-fade">
+            <div class="profile-placeholder mx-auto">
+                <img src="Photo Portfolio.png" alt="Joslin Hounkpatin">
+            </div>
+        </div>
+
+        <!-- Les Badges (Uniquement sur Mobile/Tablette) -->
+        <div class="hero-badges d-lg-none mt-5 text-center w-100">
+            <div class="hero-badge-divider-horizontal mx-auto mb-4"></div>
+            <p class="badge-label">certified technical expertise</p>
+            <div class="d-flex gap-4 justify-content-center align-items-center">
+                <a href="https://www.credly.com/badges/c8b4ada4-33bf-41fb-b19e-e5e076218dd8/public_url" target="_blank">
+                    <img src="introduction-to-cybersecurity.png" alt="Cisco" class="hero-badge-img">
+                </a>
+                <a href="https://www.credly.com/badges/ca3eb82a-da60-4e69-b29b-fb1faf2855a1/public_url" target="_blank">
+                    <img src="python-essentials-1.1.png" alt="Python" class="hero-badge-img">
+                </a>
+            </div>
+            <p class="small italic text-muted-custom mt-3">Cybersecurity & Software Foundations</p>
         </div>
     </div>
 </div>
-</div>
             </div>
         </div>
-        <div class="hero-geometric">
-            <div class="morph-shape">
-                <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-                    <path class="morph-path" fill="none" stroke="currentColor" stroke-width="1"/>
-                </svg>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
     <section id="about" class="about-section">
         <div class="container">
@@ -169,6 +200,7 @@
                             <span class="service-tag">PRD</span>
                             <span class="service-tag">User Stories</span>
                             <span class="service-tag">User Flows</span>
+                            <span class="service-tag">Product Backlog</span>
                         </div>
                     </div>
                 </div>
@@ -187,6 +219,7 @@
                             <span class="service-tag">CSS3</span>
                             <span class="service-tag">Bootstrap</span>
                             <span class="service-tag">JavaScript</span>
+                            <span class="service-tag">Python</span>
                         </div>
                     </div>
                 </div>
@@ -306,12 +339,97 @@
         </div>
     </section>
 
+
+    <!-- SECTION CERTIFICATIONS -->
+<section id="certifications" class="certifications-section reveal-fade">
+    <div class="container">
+        <span class="section-label text-center d-block">VALIDATED EXPERTISE</span>
+        <h2 class="section-title text-center mb-5">MY CERTIFICATIONS</h2>
+        
+        <div class="row g-4">
+            <!-- Bloc 1 : Intelligence Artificielle (Anthropic) -->
+            <div class="col-lg-4 col-md-6">
+                <div class="island-card-light p-4 h-100">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="service-icon me-3" style="width: 50px; height: 50px;">
+                            <i class="bi bi-cpu" style="font-size: 24px;"></i>
+                        </div>
+                        <h4 class="mb-0" style="font-size: 1.1rem;">AI & LLM Specialist</h4>
+                    </div>
+                    <p class="small text-gold mb-3 text-uppercase" style="letter-spacing: 1px;">Anthropic (Claude)</p>
+                    <ul class="realisation-list border-top pt-3">
+                        <li><a href="https://verify.skilljar.com/c/ukzipyt978f5" target="_blank" class="nav-link p-0 d-inline">Claude 101<i class="bi bi-patch-check-fill ms-1"></i></a></li>
+                         <li><a href="https://verify.skilljar.com/c/dwtaoppzvdbu" target="_blank" class="nav-link p-0 d-inline">Claude Code 101<i class="bi bi-patch-check-fill ms-1"></i></a></li>
+                        <li><a href="https://verify.skilljar.com/c/7ysq7rsggxgs" target="_blank" class="nav-link p-0 d-inline">Claude in Action <i class="bi bi-patch-check-fill ms-1"></i></a></li>
+                        <li><a href="https://verify.skilljar.com/c/k88zcf6fgynt" target="_blank" class="nav-link p-0 d-inline">Building with Claude API <i class="bi bi-patch-check-fill ms-1"></i></a></li>
+                        <li><a href="https://verify.skilljar.com/c/2397dvomht47" target="_blank" class="nav-link p-0 d-inline">Model Context Protocol (MCP) <i class="bi bi-patch-check-fill ms-1"></i></a></li>
+                        <li><a href="https://verify.skilljar.com/c/nekbe59yr26t" target="_blank" class="nav-link p-0 d-inline">AI Fluency Foundations & Framework<i class="bi bi-patch-check-fill ms-1"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bloc 2 : Gestion de Projet -->
+            <div class="col-lg-4 col-md-6">
+                <div class="island-card-light p-4 h-100">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="service-icon me-3" style="width: 50px; height: 50px;">
+                            <i class="bi bi-kanban" style="font-size: 24px;"></i>
+                        </div>
+                        <h4 class="mb-0" style="font-size: 1.1rem;">Project Management</h4>
+                    </div>
+                    <p class="small text-gold mb-3 text-uppercase" style="letter-spacing: 1px;">PMI & Agile</p>
+                    <ul class="realisation-list border-top pt-3">
+                        <li class="mb-3">
+                            <strong>PMI Project Management Ready</strong><br>
+                            <span class="small ">XED / PMI</span>
+                            <a href="https://xperienceed.com/verify-certificate/e886c9f9-a46b-4012-9130-f967bae689c8" target="_blank" class="project-link d-block mt-1">Verify Certificate</a>
+                        </li>
+                        <li>
+                            <strong>Foundations Agile & Scrum</strong><br>
+                            <span class="small ">Cursa</span>
+                            <a href="https://cursa.app/fr/mon-certificat/cert47b0d436c180d3367ec18e081c398d29" target="_blank" class="project-link d-block mt-1">Verify Certificate</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bloc 3 : Technique & Sécurité -->
+            <div class="col-lg-4 col-md-12">
+                <div class="island-card-light p-4 h-100">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="service-icon me-3" style="width: 50px; height: 50px;">
+                            <i class="bi bi-shield-lock" style="font-size: 24px;"></i>
+                        </div>
+                        <h4 class="mb-0" style="font-size: 1.1rem;">Tech Foundations</h4>
+                    </div>
+                    <p class="small text-gold mb-3 text-uppercase" style="letter-spacing: 1px;">Cisco & Python Institute</p>
+                    <ul class="realisation-list border-top pt-3">
+                        <li class="mb-3">
+                            <strong>Introduction to Cybersecurity</strong><br>
+                            <span class="small ">Cisco Networking Academy</span>
+                            <a href="https://www.credly.com/badges/c8b4ada4-33bf-41fb-b19e-e5e076218dd8/public_url" target="_blank" class="project-link d-block mt-1">Verify Badge</a>
+                        </li>
+                        <li>
+                            <strong>Python Essentials 1</strong><br>
+                            <span class="small ">OpenEDG Python Institute</span>
+                            <a href="https://www.credly.com/badges/ca3eb82a-da60-4e69-b29b-fb1faf2855a1/public_url" target="_blank" class="project-link d-block mt-1">Verify Badge</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
     
-    <section id="realisations" class="realisations-section">
+    <section id="projets-tech" class="projects-section reveal-fade">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <span class="section-label reveal-fade">HACKATHONS & TECH PROJECTS</span>
+                    <span class="section-label reveal-fade">TECH PROJECTS</span>
                     <h2 class="section-title reveal-fade">Key Achievements</h2>
                 </div>
             </div>
@@ -356,7 +474,7 @@
     </section>
 
    
-    <section id="projects" class="projects-section">
+    <section id="portfolio" class="projects-section reveal-fade">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">

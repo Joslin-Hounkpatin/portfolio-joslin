@@ -276,13 +276,35 @@ section {
 
 .hero-tagline {
     font-family: var(--font-body);
-    font-size: 1.25rem;
+    font-size: 1.05rem;
     color: var(--gray-600);
     max-width: 500px;
     margin-bottom: 40px;
-    font-weight: 400;
-    font-style: italic;
+    font-weight: 100px;
+    font-style: normal;
 }
+
+
+.hero-badge-img {
+    height: 45px; /* Taille élégante, pas trop imposante */
+    width: auto;
+    filter: grayscale(100%) opacity(0.6);
+    transition: var(--transition-slow);
+}
+
+.hero-badge-img:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Animation fluide pour l'apparition au chargement */
+.hero-badges {
+    border-left: 1px solid var(--gold-glow);
+    padding-left: 20px;
+}
+
+
+
 
 .btn-primary-gold {
     display: inline-block;
@@ -1187,4 +1209,83 @@ a, button, .island-card, .contact-link {
 
 input, textarea {
     font-size: 16px !important;
+}
+
+/* --- Style global des badges --- */
+.hero-badge-img {
+    height: 45px;
+    width: auto;
+    filter: grayscale(100%) opacity(0.6);
+    transition: var(--transition-slow);
+}
+
+.hero-badge-img:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.badge-label {
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gray-700);
+    margin-bottom: 12px;
+    font-family: var(--font-title);
+}
+
+.text-muted-custom {
+    color: var(--gray-600);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* --- Adaptations Responsive --- */
+
+/* Sur Desktop (Grand écran) */
+@media (min-width: 992px) {
+    .hero-badges {
+        border-left: 1px solid var(--gray-800);
+        padding-left: 20px;
+    }
+    .hero-badge-divider {
+        width: 1px;
+        height: 30px;
+        background: var(--gray-800);
+    }
+}
+
+/* Sur Mobile (Petit écran) */
+@media (max-width: 991px) {
+    .hero-badges {
+        border-left: none; /* On enlève la barre verticale */
+        padding-left: 0;
+        border-top: 1px solid rgba(255, 215, 0, 0.1); /* On ajoute une barre horizontale discrète */
+        padding-top: 25px;
+    }
+    
+    .profile-placeholder {
+        margin: 0 auto; /* Centre la photo sur mobile */
+    }
+}
+
+
+@media (min-width: 992px) {
+    .nav-link {
+        padding: 10px 10px !important; /* On réduit de 20px à 10px */
+        font-size: 13px !important;    /* On réduit la police de 15px à 13px */
+    }
+    
+    .navbar-brand {
+        font-size: 22px; /* Un peu plus petit */
+    }
+
+    .btn-cv {
+        padding: 10px 15px; /* Bouton CV plus compact */
+        font-size: 11px;
+    }
+
+    .nav-social {
+        gap: 10px; /* On serre les icônes réseaux */
+        margin-right: 10px;
+    }
 }
