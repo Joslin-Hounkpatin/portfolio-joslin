@@ -1,1924 +1,3232 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joslin Hounkpatin | Chef de Projet Digital</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --black:#080808;--dark:#0e0e0e;--card:#111111;--border:rgba(255,255,255,0.07);
-  --gold:#c9a96e;--gold-light:#e8cfa0;--glow:rgba(201,169,110,0.18);
-  --white:#f0ece4;--muted:rgba(240,236,228,0.45);
-  --font-display:'Cormorant Garamond',serif;--font-body:'Inter',sans-serif;--font-ui:'Space Grotesk',sans-serif;
-}
-html{scroll-behavior:smooth}
-body{background:var(--black);color:var(--white);font-family:var(--font-body);font-weight:300;overflow-x:hidden}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:24px 48px;background:linear-gradient(to bottom,rgba(8,8,8,.97) 0%,transparent 100%);backdrop-filter:blur(4px)}
-.nav-logo{font-family:var(--font-ui);font-size:13px;font-weight:500;letter-spacing:.22em;color:var(--white);text-decoration:none;text-transform:uppercase}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{font-family:var(--font-ui);font-size:11px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s}
-.nav-links a:hover{color:var(--gold)}
-.nav-right{display:flex;gap:14px;align-items:center}
-.nav-lang{font-family:var(--font-ui);font-size:11px;letter-spacing:.12em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color .3s}
-.nav-lang:hover{color:var(--gold)}
-.nav-cv{border:1px solid rgba(201,169,110,.4);padding:6px 16px;color:var(--gold)!important}
-/* Hamburger */
-.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:none;border:none;cursor:pointer;padding:4px;z-index:300}
-.hamburger span{display:block;width:22px;height:1px;background:var(--white);transition:all .35s;transform-origin:center}
-.hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-.hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-/* Mobile drawer */
-.mobile-menu{
-  display:none;position:fixed;inset:0;z-index:150;
-  background:rgba(8,8,8,.98);backdrop-filter:blur(12px);
-  flex-direction:column;align-items:center;justify-content:center;gap:25px;
-}
-.mobile-menu.open{display:flex}
-.mobile-menu a{font-family:var(--font-display);font-size:clamp(28px,8vw,20px);font-weight:200;color:var(--muted);text-decoration:none;letter-spacing:.06em;transition:color .25s}
-.mobile-menu a:hover{color:var(--gold)}
-.mobile-menu-lang{display:flex;gap:20px;margin-top:12px}
-.mobile-menu-lang a{font-family:var(--font-ui)!important;font-size:10px!important;letter-spacing:.22em!important;text-transform:uppercase;color:var(--muted)!important;text-decoration:none;border:1px solid var(--border);padding:8px 18px;transition:all .25s}
-.mobile-menu-lang a:hover{border-color:var(--gold);color:var(--gold)!important}
-
-/* ── HERO ── */
-#hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 65% 85% at 62% 50%,rgba(40,28,10,.6) 0%,var(--black) 68%)}
-
-
-
-/* Photo – repositionnée en haut du cadre */
-.hero-photo-wrap{
-  position:absolute;right:3%;top:25%;transform:translateY(-50%);
-  width:450px;height:500px;z-index:1;
-  display:flex;align-items:flex-start;justify-content:center;
-  padding-top:0;overflow:hidden;
-  
-}
-.hero-photo-wrap img{
-  width:72%;height:auto;max-height:90%;
-  object-fit:cover;object-position:top center;
-  display:block;
-  border: 1px solid rgba(201, 169, 110, 0.4);
-    box-shadow: 0 0 20px rgba(201, 169, 110, 0.15); 
- 
-}
-/* fade en bas de la photo */
-.hero-photo-wrap::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:40%;
-  background:linear-gradient(to top,var(--black) 0%,transparent 100%);
-  z-index:3;pointer-events:none;
-}
-
-
-/* Contenu gauche */
-.hero-content{position:relative;z-index:5;padding:0 52px;max-width:660px;padding-top:80px}
-.hero-eyebrow{
-  font-family:var(--font-ui);font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:12px;
-  /* fix flou : on retire tout filtre/blur potentiel */
-  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-}
-.hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--gold);flex-shrink:0}
-
-.hero-title{font-family:var(--font-display);font-size:clamp(60px,8.5vw,112px);font-weight:300;line-height:.9;letter-spacing:-.01em;color:var(--white);margin-bottom:4px}
-.hero-title .line2{display:block;-webkit-text-stroke:1px rgba(240,236,228,.45);color:transparent}
-
-.hero-subtitle{font-family:var(--font-ui);font-size:12px;font-weight:500;letter-spacing:.22em;color:var(--gold-light);margin:20px 0 14px;text-transform:uppercase}
-.hero-desc{font-size:14px;line-height:1.78;color:var(--muted);max-width:400px;margin-bottom:40px}
-
-.hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:14px}
-.btn-primary{display:inline-flex;align-items:center;gap:12px;padding:13px 30px;border:1px solid rgba(201,169,110,.5);color:var(--white);text-decoration:none;font-family:var(--font-ui);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;transition:all .35s;position:relative;overflow:hidden}
-.btn-primary::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-100%);transition:transform .35s}
-.btn-primary:hover::before{transform:translateX(0)}
-.btn-primary span,.btn-primary svg{position:relative;z-index:1}
-.btn-primary:hover{color:var(--black);border-color:var(--gold)}
-.btn-primary:hover svg{transform:translateX(4px)}
-.btn-primary svg{transition:transform .3s}
-
-.btn-ghost{display:inline-flex;align-items:center;gap:10px;padding:13px 30px;color:var(--muted);text-decoration:none;font-family:var(--font-ui);font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--border);transition:all .3s}
-.btn-ghost:hover{color:var(--white);border-color:rgba(255,255,255,.2)}
-
-.hero-stats{position:absolute;bottom:52px;left:52px;display:flex;gap:44px;z-index:5;align-items:center}
-.stat-item{display:flex;flex-direction:column;gap:4px}
-.stat-num{font-family:var(--font-display);font-size:34px;font-weight:300;color:var(--gold);line-height:1}
-.stat-label{font-family:var(--font-ui);font-size:9px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.stat-div{width:1px;height:36px;background:var(--border)}
-
-.scroll-hint{position:absolute;bottom:48px;right:48px;z-index:5;display:flex;flex-direction:column;align-items:center;gap:10px}
-.scroll-hint span{font-family:var(--font-ui);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl;transform:rotate(180deg)}
-.scroll-line{width:1px;height:56px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollP 2s ease-in-out infinite}
-@keyframes scrollP{0%,100%{opacity:.4}50%{opacity:1}}
-
-/* ── ABOUT ── */
-#about{padding:110px 52px;display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center;border-top:1px solid var(--border)}
-.section-label{font-family:var(--font-ui);font-size:10px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
-.section-title{font-family:var(--font-display);font-size:clamp(32px,3.8vw,50px);font-weight:300;line-height:1.15;color:var(--white);margin-bottom:24px}
-.about-text{font-size:14px;line-height:1.82;color:var(--muted)}
-.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px}
-.about-stat{padding:30px 26px;background:var(--card);border:1px solid var(--border);transition:border-color .3s}
-.about-stat:hover{border-color:rgba(201,169,110,.35)}
-.about-stat .num{font-family:var(--font-display);font-size:44px;font-weight:300;color:var(--gold);line-height:1}
-.about-stat .lbl{font-family:var(--font-ui);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:7px}
-
-/* ── SERVICES ── */
-#services{padding:90px 52px;border-top:1px solid var(--border)}
-.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:56px}
-.service-card{background:var(--card);padding:40px 28px;transition:background .3s;position:relative;overflow:hidden}
-.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .5s}
-.service-card:hover::before{transform:scaleX(1)}
-.service-card:hover{background:#161616}
-.service-num{font-family:var(--font-ui);font-size:10px;letter-spacing:.22em;color:var(--gold);margin-bottom:24px;opacity:.7}
-.service-name{font-family:var(--font-display);font-size:21px;font-weight:400;color:var(--white);margin-bottom:16px;line-height:1.3}
-.service-desc{font-size:13px;line-height:1.7;color:var(--muted)}
-.service-tags{margin-top:24px;display:flex;flex-wrap:wrap;gap:7px}
-.tag{font-family:var(--font-ui);font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--border);color:var(--muted)}
-
-/* ── EXPÉRIENCE ── */
-#parcours{padding:90px 52px;border-top:1px solid var(--border)}
-.exp-grid{display:flex;flex-direction:column;gap:1px;margin-top:56px;background:var(--border)}
-.exp-item{background:var(--card);padding:44px 44px;display:grid;grid-template-columns:140px 1fr;gap:24px;transition:background .3s}
-.exp-item:hover{background:#161616}
-.exp-left{display:flex;flex-direction:column;gap:10px}
-.exp-period{font-family:var(--font-ui);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);line-height:1.4}
-.exp-badge{display:inline-block;font-family:var(--font-ui);font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(201,169,110,.3);color:rgba(201,169,110,.7);margin-top:6px;width:fit-content}
-.exp-title{font-family:var(--font-display);font-size:26px;font-weight:400;color:var(--white);margin-bottom:4px}
-.exp-company{font-family:var(--font-ui);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);margin-bottom:20px;opacity:.8}
-.exp-list{list-style:none;display:flex;flex-direction:column;gap:10px}
-.exp-list li{font-size:13px;line-height:1.68;color:var(--muted);display:flex;align-items:flex-start;gap:12px}
-.exp-list li::before{content:'—';color:var(--gold);opacity:.5;flex-shrink:0;margin-top:1px}
-.exp-list strong{color:rgba(240,236,228,.8);font-weight:500;  white-space: nowrap;}
-
-/* ── PORTFOLIO CARDS ── */
-#portfolio{padding:90px 52px;border-top:1px solid var(--border);background:linear-gradient(to bottom,var(--black),#0b0a07)}
-.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:56px}
-.portfolio-card{background:var(--card);display:flex;flex-direction:column;overflow:hidden;transition:background .3s;position:relative}
-.portfolio-card:hover{background:#161616}
-.portfolio-card-img{width:100%;aspect-ratio:16/10;overflow:hidden;position:relative}
-.portfolio-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s;display:block}
-.portfolio-card:hover .portfolio-card-img img{transform:scale(1.04)}
-.portfolio-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(10,8,6,.9) 100%)}
-.portfolio-card-type{position:absolute;top:14px;left:14px;font-family:var(--font-ui);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;background:rgba(8,8,8,.7);border:1px solid rgba(201,169,110,.3);color:var(--gold);z-index:2}
-.portfolio-card-body{padding:28px 28px 32px}
-.portfolio-card-title{font-family:var(--font-display);font-size:20px;font-weight:400;color:var(--white);margin-bottom:10px;line-height:1.3;transition:color .3s}
-.portfolio-card:hover .portfolio-card-title{color:var(--gold)}
-.portfolio-card-desc{font-size:12px;line-height:1.7;color:var(--muted);margin-bottom:18px}
-.portfolio-card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
-.portfolio-card-links{display:flex;gap:12px;padding-top:18px;border-top:1px solid var(--border)}
-.portfolio-card-link{font-family:var(--font-ui);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:6px;transition:gap .25s}
-.portfolio-card-link:hover{gap:10px}
-.portfolio-card-link.secondary{color:var(--muted)}
-.portfolio-card-link.secondary:hover{color:var(--white)}
-/* carte "En cours" */
-.portfolio-card.wip .portfolio-card-img{background:linear-gradient(135deg,#111 0%,#1a1508 100%);display:flex;align-items:center;justify-content:center}
-.wip-icon{font-size:48px;opacity:.2}
-.wip-label{position:absolute;top:14px;left:14px;font-family:var(--font-ui);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.3);color:var(--gold);z-index:2}
-
-/* ── PROJETS TECH (liste) ── */
-#projets{padding:90px 52px;border-top:1px solid var(--border)}
-.projects-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px}
-.projects-link{font-family:var(--font-ui);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:8px;transition:gap .3s}
-.projects-link:hover{gap:14px}
-.projects-list{display:flex;flex-direction:column;gap:1px;background:var(--border)}
-.project-row{background:var(--card);padding:38px 40px;display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:36px;transition:background .3s;cursor:pointer}
-.project-row:hover{background:#161616}
-.project-row:hover .project-title{color:var(--gold)}
-.project-index{font-family:var(--font-display);font-size:38px;font-weight:300;color:var(--border);line-height:1;user-select:none}
-.project-row:hover .project-index{color:rgba(201,169,110,.18)}
-.project-meta{display:flex;flex-direction:column;gap:6px}
-.project-role{font-family:var(--font-ui);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.8}
-.project-title{font-family:var(--font-display);font-size:26px;font-weight:300;color:var(--white);transition:color .3s;line-height:1.2}
-.project-brief{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.65;max-width:540px}
-.project-tech-list{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
-.project-arrow{font-size:20px;color:var(--muted);transition:all .3s}
-.project-row:hover .project-arrow{color:var(--gold);transform:translateX(5px)}
-
-.projects-list-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 24px;
-  margin-top: 40px;
-}
-
-/* La Carte Projet */
-.project-card-new {
-  background: #111111;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.project-card-new:hover {
-  border-color: var(--gold);
-  transform: translateY(-5px);
-}
-
-/* Header de la carte : Badge et Date */
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.project-badge {
-  background: #f1c40f; /* Le jaune de ton image */
-  color: #000;
-  font-family: var(--font-ui);
-  font-size: 10px;
-  font-weight: 700;
-  padding: 8px 16px;
-  border-radius: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.project-date {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 14px;
-  color: #888;
-}
-
-/* Titres */
-.card-title {
-  font-family: var(--font-display);
-  font-size: 28px;
-  text-transform: uppercase;
-  color: #fff;
-  margin-bottom: 8px;
-}
-
-.card-subtitle {
-  font-family: var(--font-display);
-  font-style: italic;
-  color: var(--gold);
-  font-size: 16px;
-  margin-bottom: 30px;
-}
-
-/* Liste des points */
-.card-list {
-  list-style: none;
-  padding: 0;
-}
-
-.card-list li {
-  position: relative;
-  padding-left: 25px;
-  margin-bottom: 18px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #bbb;
-}
-
-.card-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 8px;
-  height: 8px;
-  background: #f1c40f; /* Point jaune */
-  border-radius: 50%;
-}
-
-.card-list strong {
-  color: #fff;
-  font-weight: 600;
-}
-
-.project-dashboard {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur ordi */
-  gap: 24px;
-  margin-top: 50px;
-}
-
-/* La carte large (3ème projet) */
-.project-card-db.wide {
-  grid-column: span 2; /* Prend toute la largeur */
-}
-
-/* Style de la Carte */
-.project-card-db {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 40px;
-  transition: all 0.4s ease;
-}
-
-.project-card-db:hover {
-  border-color: rgba(201, 169, 110, 0.4);
-  transform: translateY(-5px);
-}
-
-/* Header : Badge & Date */
-.db-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.db-badge {
-  background: var(--gold);
-  color: var(--black);
-  font-family: var(--font-ui);
-  font-size: 9px;
-  font-weight: 600;
-  padding: 7px 15px;
-  border-radius: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.db-date {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 14px;
-  color: var(--muted);
-}
-
-/* Titres */
-.db-title {
-  font-family: var(--font-display);
-  font-size: 32px;
-  text-transform: uppercase;
-  color: var(--white);
-  margin-bottom: 6px;
-  letter-spacing: 0.02em;
-}
-
-.db-subtitle {
-  font-family: var(--font-display);
-  font-style: normal;
-  color: var(--gold);
-  font-size: 16px;
-  margin-bottom: 32px;
-}
-
-/* Listes de points */
-.db-list {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  gap: 18px;
-}
-
-/* Sur la carte large, on met la liste sur 2 colonnes comme sur ton image */
-.project-card-db.wide .db-list {
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-}
-
-.db-list li {
-  position: relative;
-  padding-left: 22px;
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--muted);
-}
-
-.db-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 7px;
-  width: 7px;
-  height: 7px;
-  background: var(--gold); /* Point doré */
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--glow);
-}
-
-.db-list strong {
-  color: var(--white);
-  font-weight: 500;
-}
-
-/* Responsive Mobile */
-
-
-/* ── CERTIFICATIONS ── */
-#certifications{padding:90px 52px;border-top:1px solid var(--border);background:linear-gradient(to bottom,var(--black) 0%,#0b0a07 100%)}
-.certs-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 50px;
-}
-
-.cert-card-v2 {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  
-  /* AJOUTE CETTE LIGNE pour la fluidité */
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
-  position: relative;
-  cursor: default;
-}
-
-/* 2. L'effet au survol (Hover) */
-.cert-card-v2:hover {
-  /* Soulèvement de la carte */
-  transform: translateY(-8px); 
-  
-  /* Changement de la bordure vers ton doré */
-  border-color: rgba(201, 169, 110, 0.4); 
-  
-  /* Légère illumination du fond */
-  background: #161616; 
-  
-  /* Ombre portée pour donner de la profondeur */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
-              0 0 15px rgba(201, 169, 110, 0.05);
-}
-
-/* 3. Optionnel : Effet sur l'icône dorée au survol de la carte */
-.cert-card-v2:hover .cert-icon-box {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(201, 169, 110, 0.3);
-  transition: all 0.3s ease;
-}
-
-/* Header avec Icône */
-.cert-header-v2 {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 30px;
-}
-
-.cert-icon-box {
-  width: 48px;
-  height: 48px;
-  background: var(--gold);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--black);
-  font-size: 20px;
-}
-
-.cert-category-title {
-  font-family: var(--font-ui);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--white);
-}
-
-.cert-issuer-v2 {
-  font-family: var(--font-ui);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 12px;
-  margin-bottom: 24px;
-}
-
-/* Liste des Certificats */
-.cert-list-v2 {
-  list-style: none;
-  padding: 0;
-}
-
-.cert-item-v2 {
-  position: relative;
-  padding-left: 24px;
-  margin-bottom: 22px;
-}
-
-.cert-item-v2::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 6px;
-  width: 6px;
-  height: 6px;
-  background: var(--gold);
-  border-radius: 50%;
-}
-
-.cert-name-v2 {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.cert-check {
-  font-size: 12px;
-  color: var(--muted);
-  opacity: 0.7;
-}
-
-.cert-verify-link {
-  display: inline-block;
-  margin-top: 6px;
-  font-family: var(--font-ui);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: all 0.3s;
-}
-
-.cert-verify-link:hover {
-  border-bottom-color: var(--gold);
-  letter-spacing: 0.15em;
-}
-
-/* Responsive */
-
-/* ── CONTACT ── */
-#contact{padding:110px 52px;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;background:var(--dark)}
-.contact-headline{font-family:var(--font-display);font-size:clamp(40px,5vw,70px);font-weight:300;line-height:1.1;color:var(--white)}
-.contact-headline em{color:var(--gold);font-style:normal}
-.contact-sub{font-size:14px;color:var(--muted);line-height:1.75;margin-top:22px;max-width:370px}
-.contact-links{display:flex;flex-direction:column;gap:2px}
-.contact-link{display:flex;align-items:center;justify-content:space-between;padding:26px 30px;background:var(--card);border:1px solid var(--border);text-decoration:none;color:var(--white);transition:all .3s}
-.contact-link:hover{background:#161616;border-color:rgba(201,169,110,.35);padding-left:38px}
-.contact-link-label{font-family:var(--font-ui);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
-.contact-link-value{font-size:14px;color:var(--white)}
-.contact-link-arrow{font-size:16px;color:var(--muted);transition:all .3s}
-.contact-link:hover .contact-link-arrow{color:var(--gold);transform:translateX(4px)}
-
-/* ── FOOTER ── */
-footer{padding:32px 52px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.footer-copy{font-family:var(--font-ui);font-size:10px;letter-spacing:.12em;color:var(--muted)}
-.footer-socials{display:flex;gap:24px}
-.footer-socials a{font-family:var(--font-ui);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s}
-.footer-socials a:hover{color:var(--gold)}
-
-/* ── ANIMATIONS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
-.hero-eyebrow{animation:fadeUp .7s .2s both}
-.hero-title{animation:fadeUp .8s .35s both}
-.hero-subtitle{animation:fadeUp .7s .5s both}
-.hero-desc{animation:fadeUp .7s .6s both}
-.hero-actions{animation:fadeUp .7s .72s both}
-.hero-stats{animation:fadeUp .6s .9s both}
-.hero-arc,.hero-photo-wrap{animation:fadeUp .9s .25s both}
-
-/* ── COMPETENCES ── */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  margin-top: 48px;
-}
-.skill-category h3 {
-  font-family: var(--font-ui);
-  font-size: 11px;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 20px;
-  border-bottom: 1px solid var(--glow);
-  padding-bottom: 10px;
-}
-.skill-category ul {
-  list-style: none;
-}
-.skill-category li {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 8px;
-  line-height: 1.5;
-}
-.tools-row {
-  margin-top: 50px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding-top: 30px;
-  border-top: 1px solid var(--border);
-}
-.tool-tag {
-  font-family: var(--font-ui);
-  font-size: 9px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--white);
-  background: rgba(255,255,255,0.03);
-  padding: 6px 14px;
-  border-radius: 2px;
-  border: 1px solid var(--border);
-}
-
-.skills-dashboard {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 50px;
-}
-
-.skill-card-v2 {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 40px;
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.skill-card-v2:hover {
-  transform: translateY(-5px);
-  border-color: rgba(201, 169, 110, 0.4);
-  background: #161616;
-}
-
-/* Header de la carte */
-.skill-header-v2 {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-.skill-icon-v2 {
-  width: 50px;
-  height: 50px;
-  background: var(--gold);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  color: var(--black);
-}
-
-.skill-category-v2 {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 400;
-  color: var(--white);
-  letter-spacing: 0.02em;
-}
-
-/* Liste de points */
-.skill-list-v2 {
-  list-style: none;
-  padding: 0;
-}
-
-.skill-list-v2 li {
-  position: relative;
-  padding-left: 24px;
-  margin-bottom: 16px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--muted);
-}
-
-.skill-list-v2 li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 6px;
-  height: 6px;
-  background: var(--gold);
-  border-radius: 50%;
-}
-
-.skill-list-v2 strong {
-  color: var(--gold-light);
-  font-weight: 500;
-}
-
-/* Conteneur qui s'étale sur toute la ligne */
-.tools-full-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 60px;
-  width: 100%;
-}
-
-/* Style individuel des badges */
-.tool-badge-premium {
-  flex: 1 1 auto; /* Force les badges à s'étirer pour remplir la ligne */
-  min-width: 120px; /* Taille minimum pour éviter qu'ils soient trop petits */
-  text-align: center;
-  padding: 14px 20px;
-  background: rgba(201, 169, 110, 0.03); /* Fond très léger */
-  border: 1px solid rgba(201, 169, 110, 0.2); /* Bordure dorée fine */
-  border-radius: 4px;
-  
-  font-family: var(--font-ui);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: default;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Effet au survol : Coloration et Lumière */
-.tool-badge-premium:hover {
-  background: var(--gold); /* Devient plein d'or */
-  color: var(--black);     /* Texte noir pour le contraste */
-  border-color: var(--gold);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(201, 169, 110, 0.2), 
-              0 0 15px rgba(201, 169, 110, 0.1);
-}
-
-/* Grille des Services */
-.services-dashboard {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 50px;
-}
-
-.service-card-v3 {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 40px;
-  transition: all 0.4s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.service-card-v3:hover {
-  transform: translateY(-5px);
-  border-color: rgba(201, 169, 110, 0.4);
-  background: #161616;
-}
-
-/* Icône en boîte dorée */
-.service-icon-box {
-  width: 54px;
-  height: 54px;
-  background: var(--gold); /* Ton doré #c9a96e */
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  color: var(--black);
-  margin-bottom: 28px;
-}
-
-/* Titre Service */
-.service-title-v3 {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: var(--white);
-  margin-bottom: 18px;
-  letter-spacing: 0.05em;
-}
-
-/* Description */
-.service-desc-v3 {
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--muted);
-  margin-bottom: 30px;
-  flex-grow: 1; /* Pousse les tags vers le bas pour l'alignement */
-}
-
-/* Groupe de Tags */
-.service-tags-v3 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.service-tag-v3 {
-  font-family: var(--font-ui);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold);
-  border: 1px solid rgba(201, 169, 110, 0.25);
-  padding: 6px 14px;
-  border-radius: 100px; /* Style pilule */
-  background: rgba(201, 169, 110, 0.03);
-  transition: all 0.3s;
-}
-
-.service-card-v3:hover .service-tag-v3 {
-  border-color: var(--gold);
-  background: rgba(201, 169, 110, 0.1);
-}
-
-/* Conteneur de la Frise */
-.timeline-wrapper {
-  position: relative;
-  max-width: 1000px;
-  margin: 50px 0;
-  padding-left: 40px; /* Espace pour la ligne */
-}
-
-/* La ligne verticale dorée */
-.timeline-wrapper::before {
-  content: '';
-  position: absolute;
-  left: 10px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, var(--gold) 0%, rgba(201, 169, 110, 0.1) 100%);
-}
-
-/* Bloc d'une expérience */
-.timeline-item {
-  position: relative;
-  margin-bottom: 50px;
-}
-
-/* Le cercle sur la ligne */
-.timeline-dot {
-  position: absolute;
-  left: -40px;
-  top: 35px;
-  width: 21px;
-  height: 21px;
-  background: var(--black);
-  border: 2px solid var(--gold);
-  border-radius: 50%;
-  z-index: 2;
-  box-shadow: 0 0 10px var(--glow);
-}
-
-/* La Carte de contenu */
-.timeline-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 40px;
-  transition: all 0.3s ease;
-}
-
-.timeline-card:hover {
-  border-color: rgba(201, 169, 110, 0.3);
-  transform: translateX(10px); /* Petit décalage au survol */
-}
-
-/* Détails du texte */
-.timeline-date {
-  font-family: var(--font-ui);
-  font-size: 9px;
-  color: var(--gold);
-  letter-spacing: 0.15em;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-}
-
-.timeline-title {
-  font-family: var(--font-display);
-  font-size: 25px;
-  font-weight: 400;
-  color: var(--white);
-  margin-bottom: 6px;
-  text-transform: uppercase;
-}
-
-.timeline-company {
-  font-family: var(--font-display);
-  font-style: normal;
-  font-size: 15px;
-  color: var(--gold-light);
-  margin-bottom: 24px;
-  opacity: 0.9;
-}
-
-/* Liste des missions */
-.timeline-list {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 30px;
-}
-
-.timeline-list li {
-  position: relative;
-  padding-left: 20px;
-  margin-bottom: 14px;
-  font-size: 12.5px;
-  line-height: 1.6;
-  color: var(--muted);
-}
-
-.timeline-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--gold);
-  font-size: 18px;
-}
-
-.timeline-list strong {
-  color: var(--white);
-  font-weight: 500;
-}
-
-/* Le Badge Jaune en bas */
-.timeline-badge {
-  display: inline-block;
-  background: var(--gold); /* Ou #f1c40f pour un jaune plus vif */
-  color: var(--black);
-  font-family: var(--font-ui);
-  font-size: 10px;
-  font-weight: 700;
-  padding: 8px 18px;
-  border-radius: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-/* Grille Portfolio - 3 colonnes */
-.portfolio-dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 50px;
-}
-
-.portfolio-card-v4 {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.4s ease;
-}
-
-.portfolio-card-v4:hover {
-  transform: translateY(-8px);
-  border-color: rgba(201, 169, 110, 0.4);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-}
-
-/* Image du projet */
-.portfolio-img-box {
-  width: 100%;
-  height: 220px;
-  overflow: hidden;
-  
-  border-bottom: 1px solid var(--border);
-}
-
-.portfolio-img-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  transition: transform 0.6s ease;
-}
-
-.portfolio-card-v4:hover .portfolio-img-box img {
-  transform: scale(1.05);
-}
-
-/* Contenu de la carte */
-.portfolio-body-v4 {
-  padding: 30px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.portfolio-type-v4 {
-  font-family: var(--font-ui);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 12px;
-}
-
-.portfolio-title-v4 {
-  font-family: var(--font-display);
-  font-size: 22px;
-  color: var(--white);
-  margin-bottom: 15px;
-  line-height: 1.3;
-}
-
-.portfolio-desc-v4 {
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--muted);
-  margin-bottom: 25px;
-}
-
-/* Tags / Technologies */
-.portfolio-tags-v4 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 30px;
-}
-
-.portfolio-tag-v4 {
-  font-family: var(--font-ui);
-  font-size: 8px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  border: 1px solid rgba(201, 169, 110, 0.2);
-  padding: 4px 10px;
-  border-radius: 4px;
-  background: rgba(201, 169, 110, 0.02);
-}
-
-/* Liens en bas */
-.portfolio-links-v4 {
-  margin-top: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-}
-
-.portfolio-link-v4 {
-  font-family: var(--font-ui);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--white);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: color 0.3s;
-}
-
-.portfolio-link-v4:hover {
-  color: var(--gold);
-}
-
-.portfolio-link-v4 svg {
-  width: 14px;
-  height: 14px;
-  color: var(--gold);
-}
-
-.portfolio-link-v4 i {
-  font-size: 16px; /* Taille de l'icône */
-  color: var(--gold); /* Sa couleur */
-  vertical-align: middle;
-}
-
-.section-skills {
-  padding: 90px 52px;
-  border-top: 1px solid var(--border);
-}
-/* ═══════════════════════════════════════════
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joslin Hounkpatin | Chef de Projet Digital</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    :root {
+      --black: #080808;
+      --dark: #0e0e0e;
+      --card: #111111;
+      --border: rgba(255, 255, 255, 0.07);
+      --gold: #c9a96e;
+      --gold-light: #e8cfa0;
+      --glow: rgba(201, 169, 110, 0.18);
+      --white: #f0ece4;
+      --muted: rgba(240, 236, 228, 0.45);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Inter', sans-serif;
+      --font-ui: 'Space Grotesk', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      overflow-x: hidden
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 48px;
+      background: linear-gradient(to bottom, rgba(8, 8, 8, .97) 0%, transparent 100%);
+      backdrop-filter: blur(4px)
+    }
+
+    .nav-logo {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .22em;
+      color: var(--white);
+      text-decoration: none;
+      text-transform: uppercase
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none
+    }
+
+    .nav-links a {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .3s
+    }
+
+    .nav-links a:hover {
+      color: var(--gold)
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 14px;
+      align-items: center
+    }
+
+    .nav-lang {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      letter-spacing: .12em;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color .3s
+    }
+
+    .nav-lang:hover {
+      color: var(--gold)
+    }
+
+    .nav-cv {
+      border: 1px solid rgba(201, 169, 110, .4);
+      padding: 6px 16px;
+      color: var(--gold) !important
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 38px;
+      height: 38px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 300
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--white);
+      transition: all .35s;
+      transform-origin: center
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg)
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0)
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg)
+    }
+
+    /* Mobile drawer */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      background: rgba(8, 8, 8, .98);
+      backdrop-filter: blur(12px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .mobile-menu.open {
+      display: flex
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 8vw, 20px);
+      font-weight: 200;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: .06em;
+      transition: color .25s
+    }
+
+    .mobile-menu a:hover {
+      color: var(--gold)
+    }
+
+    .mobile-menu-lang {
+      display: flex;
+      gap: 20px;
+      margin-top: 12px
+    }
+
+    .mobile-menu-lang a {
+      font-family: var(--font-ui) !important;
+      font-size: 10px !important;
+      letter-spacing: .22em !important;
+      text-transform: uppercase;
+      color: var(--muted) !important;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      transition: all .25s
+    }
+
+    .mobile-menu-lang a:hover {
+      border-color: var(--gold);
+      color: var(--gold) !important
+    }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: radial-gradient(ellipse 65% 85% at 62% 50%, rgba(40, 28, 10, .6) 0%, var(--black) 68%)
+    }
+
+
+
+    /* Photo – repositionnée en haut du cadre */
+    .hero-photo-wrap {
+      position: absolute;
+      right: 3%;
+      top: 25%;
+      transform: translateY(-50%);
+      width: 450px;
+      height: 500px;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 0;
+      overflow: hidden;
+
+    }
+
+    .hero-photo-wrap img {
+      width: 72%;
+      height: auto;
+      max-height: 90%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      border: 1px solid rgba(201, 169, 110, 0.4);
+      box-shadow: 0 0 20px rgba(201, 169, 110, 0.15);
+
+    }
+
+    /* fade en bas de la photo */
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(to top, var(--black) 0%, transparent 100%);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+
+    /* Contenu gauche */
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      padding: 0 52px;
+      max-width: 660px;
+      padding-top: 80px
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      /* fix flou : on retire tout filtre/blur potentiel */
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(60px, 8.5vw, 112px);
+      font-weight: 300;
+      line-height: .9;
+      letter-spacing: -.01em;
+      color: var(--white);
+      margin-bottom: 4px
+    }
+
+    .hero-title .line2 {
+      display: block;
+      -webkit-text-stroke: 1px rgba(240, 236, 228, .45);
+      color: transparent
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .22em;
+      color: var(--gold-light);
+      margin: 20px 0 14px;
+      text-transform: uppercase
+    }
+
+    .hero-desc {
+      font-size: 14px;
+      line-height: 1.78;
+      color: var(--muted);
+      max-width: 400px;
+      margin-bottom: 40px
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 30px;
+      border: 1px solid rgba(201, 169, 110, .5);
+      color: var(--white);
+      text-decoration: none;
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      transition: all .35s;
+      position: relative;
+      overflow: hidden
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: translateX(-100%);
+      transition: transform .35s
+    }
+
+    .btn-primary:hover::before {
+      transform: translateX(0)
+    }
+
+    .btn-primary span,
+    .btn-primary svg {
+      position: relative;
+      z-index: 1
+    }
+
+    .btn-primary:hover {
+      color: var(--black);
+      border-color: var(--gold)
+    }
+
+    .btn-primary:hover svg {
+      transform: translateX(4px)
+    }
+
+    .btn-primary svg {
+      transition: transform .3s
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 30px;
+      color: var(--muted);
+      text-decoration: none;
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      transition: all .3s
+    }
+
+    .btn-ghost:hover {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, .2)
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 52px;
+      left: 52px;
+      display: flex;
+      gap: 44px;
+      z-index: 5;
+      align-items: center
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 34px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1
+    }
+
+    .stat-label {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted)
+    }
+
+    .stat-div {
+      width: 1px;
+      height: 36px;
+      background: var(--border)
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 48px;
+      right: 48px;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px
+    }
+
+    .scroll-hint span {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg)
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 56px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollP 2s ease-in-out infinite
+    }
+
+    @keyframes scrollP {
+
+      0%,
+      100% {
+        opacity: .4
+      }
+
+      50% {
+        opacity: 1
+      }
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      padding: 110px 52px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 90px;
+      align-items: center;
+      border-top: 1px solid var(--border)
+    }
+
+    .section-label {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 3.8vw, 50px);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 24px
+    }
+
+    .about-text {
+      font-size: 14px;
+      line-height: 1.82;
+      color: var(--muted)
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 48px
+    }
+
+    .about-stat {
+      padding: 30px 26px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      transition: border-color .3s
+    }
+
+    .about-stat:hover {
+      border-color: rgba(201, 169, 110, .35)
+    }
+
+    .about-stat .num {
+      font-family: var(--font-display);
+      font-size: 44px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1
+    }
+
+    .about-stat .lbl {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 7px
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      padding: 90px 52px;
+      border-top: 1px solid var(--border)
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 56px
+    }
+
+    .service-card {
+      background: var(--card);
+      padding: 40px 28px;
+      transition: background .3s;
+      position: relative;
+      overflow: hidden
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .5s
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1)
+    }
+
+    .service-card:hover {
+      background: #161616
+    }
+
+    .service-num {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      letter-spacing: .22em;
+      color: var(--gold);
+      margin-bottom: 24px;
+      opacity: .7
+    }
+
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.3
+    }
+
+    .service-desc {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--muted)
+    }
+
+    .service-tags {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px
+    }
+
+    .tag {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      color: var(--muted)
+    }
+
+    /* ── EXPÉRIENCE ── */
+    #parcours {
+      padding: 90px 52px;
+      border-top: 1px solid var(--border)
+    }
+
+    .exp-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      margin-top: 56px;
+      background: var(--border)
+    }
+
+    .exp-item {
+      background: var(--card);
+      padding: 44px 44px;
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 24px;
+      transition: background .3s
+    }
+
+    .exp-item:hover {
+      background: #161616
+    }
+
+    .exp-left {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .exp-period {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      line-height: 1.4
+    }
+
+    .exp-badge {
+      display: inline-block;
+      font-family: var(--font-ui);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid rgba(201, 169, 110, .3);
+      color: rgba(201, 169, 110, .7);
+      margin-top: 6px;
+      width: fit-content
+    }
+
+    .exp-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 4px
+    }
+
+    .exp-company {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 20px;
+      opacity: .8
+    }
+
+    .exp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .exp-list li {
+      font-size: 13px;
+      line-height: 1.68;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px
+    }
+
+    .exp-list li::before {
+      content: '—';
+      color: var(--gold);
+      opacity: .5;
+      flex-shrink: 0;
+      margin-top: 1px
+    }
+
+    .exp-list strong {
+      color: rgba(240, 236, 228, .8);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* ── PORTFOLIO CARDS ── */
+    #portfolio {
+      padding: 90px 52px;
+      border-top: 1px solid var(--border);
+      background: linear-gradient(to bottom, var(--black), #0b0a07)
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 56px
+    }
+
+    .portfolio-card {
+      background: var(--card);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: background .3s;
+      position: relative
+    }
+
+    .portfolio-card:hover {
+      background: #161616
+    }
+
+    .portfolio-card-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      position: relative
+    }
+
+    .portfolio-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s;
+      display: block
+    }
+
+    .portfolio-card:hover .portfolio-card-img img {
+      transform: scale(1.04)
+    }
+
+    .portfolio-card-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(10, 8, 6, .9) 100%)
+    }
+
+    .portfolio-card-type {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      font-family: var(--font-ui);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      background: rgba(8, 8, 8, .7);
+      border: 1px solid rgba(201, 169, 110, .3);
+      color: var(--gold);
+      z-index: 2
+    }
+
+    .portfolio-card-body {
+      padding: 28px 28px 32px
+    }
+
+    .portfolio-card-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.3;
+      transition: color .3s
+    }
+
+    .portfolio-card:hover .portfolio-card-title {
+      color: var(--gold)
+    }
+
+    .portfolio-card-desc {
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 18px
+    }
+
+    .portfolio-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 22px
+    }
+
+    .portfolio-card-links {
+      display: flex;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border)
+    }
+
+    .portfolio-card-link {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap .25s
+    }
+
+    .portfolio-card-link:hover {
+      gap: 10px
+    }
+
+    .portfolio-card-link.secondary {
+      color: var(--muted)
+    }
+
+    .portfolio-card-link.secondary:hover {
+      color: var(--white)
+    }
+
+    /* carte "En cours" */
+    .portfolio-card.wip .portfolio-card-img {
+      background: linear-gradient(135deg, #111 0%, #1a1508 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .wip-icon {
+      font-size: 48px;
+      opacity: .2
+    }
+
+    .wip-label {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      font-family: var(--font-ui);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      background: rgba(201, 169, 110, .12);
+      border: 1px solid rgba(201, 169, 110, .3);
+      color: var(--gold);
+      z-index: 2
+    }
+
+    /* ── PROJETS TECH (liste) ── */
+    #projets {
+      padding: 90px 52px;
+      border-top: 1px solid var(--border)
+    }
+
+    .projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px
+    }
+
+    .projects-link {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap .3s
+    }
+
+    .projects-link:hover {
+      gap: 14px
+    }
+
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border)
+    }
+
+    .project-row {
+      background: var(--card);
+      padding: 38px 40px;
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      align-items: center;
+      gap: 36px;
+      transition: background .3s;
+      cursor: pointer
+    }
+
+    .project-row:hover {
+      background: #161616
+    }
+
+    .project-row:hover .project-title {
+      color: var(--gold)
+    }
+
+    .project-index {
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 300;
+      color: var(--border);
+      line-height: 1;
+      user-select: none
+    }
+
+    .project-row:hover .project-index {
+      color: rgba(201, 169, 110, .18)
+    }
+
+    .project-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .project-role {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .8
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 300;
+      color: var(--white);
+      transition: color .3s;
+      line-height: 1.2
+    }
+
+    .project-brief {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 5px;
+      line-height: 1.65;
+      max-width: 540px
+    }
+
+    .project-tech-list {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-top: 12px
+    }
+
+    .project-arrow {
+      font-size: 20px;
+      color: var(--muted);
+      transition: all .3s
+    }
+
+    .project-row:hover .project-arrow {
+      color: var(--gold);
+      transform: translateX(5px)
+    }
+
+    .projects-list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    /* La Carte Projet */
+    .project-card-new {
+      background: #111111;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .project-card-new:hover {
+      border-color: var(--gold);
+      transform: translateY(-5px);
+    }
+
+    /* Header de la carte : Badge et Date */
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .project-badge {
+      background: #f1c40f;
+      /* Le jaune de ton image */
+      color: #000;
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .project-date {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 14px;
+      color: #888;
+    }
+
+    /* Titres */
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .card-subtitle {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--gold);
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    /* Liste des points */
+    .card-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card-list li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 18px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #bbb;
+    }
+
+    .card-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background: #f1c40f;
+      /* Point jaune */
+      border-radius: 50%;
+    }
+
+    .card-list strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .project-dashboard {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      /* 2 colonnes sur ordi */
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    /* La carte large (3ème projet) */
+    .project-card-db.wide {
+      grid-column: span 2;
+      /* Prend toute la largeur */
+    }
+
+    /* Style de la Carte */
+    .project-card-db {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      transition: all 0.4s ease;
+    }
+
+    .project-card-db:hover {
+      border-color: rgba(201, 169, 110, 0.4);
+      transform: translateY(-5px);
+    }
+
+    /* Header : Badge & Date */
+    .db-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .db-badge {
+      background: var(--gold);
+      color: var(--black);
+      font-family: var(--font-ui);
+      font-size: 9px;
+      font-weight: 600;
+      padding: 7px 15px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .db-date {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Titres */
+    .db-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .db-subtitle {
+      font-family: var(--font-display);
+      font-style: normal;
+      color: var(--gold);
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+
+    /* Listes de points */
+    .db-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 18px;
+    }
+
+    /* Sur la carte large, on met la liste sur 2 colonnes comme sur ton image */
+    .project-card-db.wide .db-list {
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .db-list li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .db-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      /* Point doré */
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--glow);
+    }
+
+    .db-list strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* Responsive Mobile */
+
+
+    /* ── CERTIFICATIONS ── */
+    #certifications {
+      padding: 90px 52px;
+      border-top: 1px solid var(--border);
+      background: linear-gradient(to bottom, var(--black) 0%, #0b0a07 100%)
+    }
+
+    .certs-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    .cert-card-v2 {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+
+      /* AJOUTE CETTE LIGNE pour la fluidité */
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+      cursor: default;
+    }
+
+    /* 2. L'effet au survol (Hover) */
+    .cert-card-v2:hover {
+      /* Soulèvement de la carte */
+      transform: translateY(-8px);
+
+      /* Changement de la bordure vers ton doré */
+      border-color: rgba(201, 169, 110, 0.4);
+
+      /* Légère illumination du fond */
+      background: #161616;
+
+      /* Ombre portée pour donner de la profondeur */
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(201, 169, 110, 0.05);
+    }
+
+    /* 3. Optionnel : Effet sur l'icône dorée au survol de la carte */
+    .cert-card-v2:hover .cert-icon-box {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(201, 169, 110, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    /* Header avec Icône */
+    .cert-header-v2 {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .cert-icon-box {
+      width: 48px;
+      height: 48px;
+      background: var(--gold);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--black);
+      font-size: 20px;
+    }
+
+    .cert-category-title {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .cert-issuer-v2 {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+    }
+
+    /* Liste des Certificats */
+    .cert-list-v2 {
+      list-style: none;
+      padding: 0;
+    }
+
+    .cert-item-v2 {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 22px;
+    }
+
+    .cert-item-v2::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .cert-name-v2 {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cert-check {
+      font-size: 12px;
+      color: var(--muted);
+      opacity: 0.7;
+    }
+
+    .cert-verify-link {
+      display: inline-block;
+      margin-top: 6px;
+      font-family: var(--font-ui);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .cert-verify-link:hover {
+      border-bottom-color: var(--gold);
+      letter-spacing: 0.15em;
+    }
+
+    /* Responsive */
+
+    /* ── CONTACT ── */
+    #contact {
+      padding: 110px 52px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      background: var(--dark)
+    }
+
+    .contact-headline {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5vw, 70px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white)
+    }
+
+    .contact-headline em {
+      color: var(--gold);
+      font-style: normal
+    }
+
+    .contact-sub {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-top: 22px;
+      max-width: 370px
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px 30px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--white);
+      transition: all .3s
+    }
+
+    .contact-link:hover {
+      background: #161616;
+      border-color: rgba(201, 169, 110, .35);
+      padding-left: 38px
+    }
+
+    .contact-link-label {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 3px
+    }
+
+    .contact-link-value {
+      font-size: 14px;
+      color: var(--white)
+    }
+
+    .contact-link-arrow {
+      font-size: 16px;
+      color: var(--muted);
+      transition: all .3s
+    }
+
+    .contact-link:hover .contact-link-arrow {
+      color: var(--gold);
+      transform: translateX(4px)
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 52px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .footer-copy {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      letter-spacing: .12em;
+      color: var(--muted)
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 24px
+    }
+
+    .footer-socials a {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .25s
+    }
+
+    .footer-socials a:hover {
+      color: var(--gold)
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(26px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .hero-eyebrow {
+      animation: fadeUp .7s .2s both
+    }
+
+    .hero-title {
+      animation: fadeUp .8s .35s both
+    }
+
+    .hero-subtitle {
+      animation: fadeUp .7s .5s both
+    }
+
+    .hero-desc {
+      animation: fadeUp .7s .6s both
+    }
+
+    .hero-actions {
+      animation: fadeUp .7s .72s both
+    }
+
+    .hero-stats {
+      animation: fadeUp .6s .9s both
+    }
+
+    .hero-arc,
+    .hero-photo-wrap {
+      animation: fadeUp .9s .25s both
+    }
+
+    /* ── COMPETENCES ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-top: 48px;
+    }
+
+    .skill-category h3 {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--glow);
+      padding-bottom: 10px;
+    }
+
+    .skill-category ul {
+      list-style: none;
+    }
+
+    .skill-category li {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .tools-row {
+      margin-top: 50px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+    }
+
+    .tool-tag {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 6px 14px;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+    }
+
+    .skills-dashboard {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    .skill-card-v2 {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .skill-card-v2:hover {
+      transform: translateY(-5px);
+      border-color: rgba(201, 169, 110, 0.4);
+      background: #161616;
+    }
+
+    /* Header de la carte */
+    .skill-header-v2 {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .skill-icon-v2 {
+      width: 50px;
+      height: 50px;
+      background: var(--gold);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: var(--black);
+    }
+
+    .skill-category-v2 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    /* Liste de points */
+    .skill-list-v2 {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skill-list-v2 li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .skill-list-v2 li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .skill-list-v2 strong {
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    /* Conteneur qui s'étale sur toute la ligne */
+    .tools-full-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 60px;
+      width: 100%;
+    }
+
+    /* Style individuel des badges */
+    .tool-badge-premium {
+      flex: 1 1 auto;
+      /* Force les badges à s'étirer pour remplir la ligne */
+      min-width: 120px;
+      /* Taille minimum pour éviter qu'ils soient trop petits */
+      text-align: center;
+      padding: 14px 20px;
+      background: rgba(201, 169, 110, 0.03);
+      /* Fond très léger */
+      border: 1px solid rgba(201, 169, 110, 0.2);
+      /* Bordure dorée fine */
+      border-radius: 4px;
+
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: default;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Effet au survol : Coloration et Lumière */
+    .tool-badge-premium:hover {
+      background: var(--gold);
+      /* Devient plein d'or */
+      color: var(--black);
+      /* Texte noir pour le contraste */
+      border-color: var(--gold);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(201, 169, 110, 0.2),
+        0 0 15px rgba(201, 169, 110, 0.1);
+    }
+
+    /* Grille des Services */
+    .services-dashboard {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    .service-card-v3 {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card-v3:hover {
+      transform: translateY(-5px);
+      border-color: rgba(201, 169, 110, 0.4);
+      background: #161616;
+    }
+
+    /* Icône en boîte dorée */
+    .service-icon-box {
+      width: 54px;
+      height: 54px;
+      background: var(--gold);
+      /* Ton doré #c9a96e */
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: var(--black);
+      margin-bottom: 28px;
+    }
+
+    /* Titre Service */
+    .service-title-v3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 18px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Description */
+    .service-desc-v3 {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 30px;
+      flex-grow: 1;
+      /* Pousse les tags vers le bas pour l'alignement */
+    }
+
+    /* Groupe de Tags */
+    .service-tags-v3 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .service-tag-v3 {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201, 169, 110, 0.25);
+      padding: 6px 14px;
+      border-radius: 100px;
+      /* Style pilule */
+      background: rgba(201, 169, 110, 0.03);
+      transition: all 0.3s;
+    }
+
+    .service-card-v3:hover .service-tag-v3 {
+      border-color: var(--gold);
+      background: rgba(201, 169, 110, 0.1);
+    }
+
+    /* Conteneur de la Frise */
+    .timeline-wrapper {
+      position: relative;
+      max-width: 1000px;
+      margin: 50px 0;
+      padding-left: 40px;
+      /* Espace pour la ligne */
+    }
+
+    /* La ligne verticale dorée */
+    .timeline-wrapper::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--gold) 0%, rgba(201, 169, 110, 0.1) 100%);
+    }
+
+    /* Bloc d'une expérience */
+    .timeline-item {
+      position: relative;
+      margin-bottom: 50px;
+    }
+
+    /* Le cercle sur la ligne */
+    .timeline-dot {
+      position: absolute;
+      left: -40px;
+      top: 35px;
+      width: 21px;
+      height: 21px;
+      background: var(--black);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      z-index: 2;
+      box-shadow: 0 0 10px var(--glow);
+    }
+
+    /* La Carte de contenu */
+    .timeline-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-card:hover {
+      border-color: rgba(201, 169, 110, 0.3);
+      transform: translateX(10px);
+      /* Petit décalage au survol */
+    }
+
+    /* Détails du texte */
+    .timeline-date {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .timeline-title {
+      font-family: var(--font-display);
+      font-size: 25px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .timeline-company {
+      font-family: var(--font-display);
+      font-style: normal;
+      font-size: 15px;
+      color: var(--gold-light);
+      margin-bottom: 24px;
+      opacity: 0.9;
+    }
+
+    /* Liste des missions */
+    .timeline-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 30px;
+    }
+
+    .timeline-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 14px;
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .timeline-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 18px;
+    }
+
+    .timeline-list strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* Le Badge Jaune en bas */
+    .timeline-badge {
+      display: inline-block;
+      background: var(--gold);
+      /* Ou #f1c40f pour un jaune plus vif */
+      color: var(--black);
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Grille Portfolio - 3 colonnes */
+    .portfolio-dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    .portfolio-card-v4 {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s ease;
+    }
+
+    .portfolio-card-v4:hover {
+      transform: translateY(-8px);
+      border-color: rgba(201, 169, 110, 0.4);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Image du projet */
+    .portfolio-img-box {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .portfolio-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      transition: transform 0.6s ease;
+    }
+
+    .portfolio-card-v4:hover .portfolio-img-box img {
+      transform: scale(1.05);
+    }
+
+    /* Contenu de la carte */
+    .portfolio-body-v4 {
+      padding: 30px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portfolio-type-v4 {
+      font-family: var(--font-ui);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .portfolio-title-v4 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--white);
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+
+    .portfolio-desc-v4 {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    /* Tags / Technologies */
+    .portfolio-tags-v4 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 30px;
+    }
+
+    .portfolio-tag-v4 {
+      font-family: var(--font-ui);
+      font-size: 8px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      border: 1px solid rgba(201, 169, 110, 0.2);
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(201, 169, 110, 0.02);
+    }
+
+    /* Liens en bas */
+    .portfolio-links-v4 {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .portfolio-link-v4 {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s;
+    }
+
+    .portfolio-link-v4:hover {
+      color: var(--gold);
+    }
+
+    .portfolio-link-v4 svg {
+      width: 14px;
+      height: 14px;
+      color: var(--gold);
+    }
+
+    .portfolio-link-v4 i {
+      font-size: 16px;
+      /* Taille de l'icône */
+      color: var(--gold);
+      /* Sa couleur */
+      vertical-align: middle;
+    }
+
+    .section-skills {
+      padding: 90px 52px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ═══════════════════════════════════════════
    MOBILE RESPONSIVE — Consolidé
    ═══════════════════════════════════════════ */
 
-@media (max-width: 900px) {
+    @media (max-width: 900px) {
 
-  /* ── NAV ── */
-  nav { padding: 18px 22px; }
-  .nav-links { display: none; }
-  .nav-right .nav-cv { display: none; }
-  .hamburger { display: flex; }
+      /* ── NAV ── */
+      nav {
+        padding: 18px 22px;
+      }
 
-  /* ── HERO ── */
-  #hero {
-    flex-direction: column;
-    align-items: stretch;
-    min-height: 100vh;
-    padding-top: 70px;
-  }
-  .hero-bg {
-    background: radial-gradient(ellipse 90% 60% at 50% 30%, rgba(40,28,10,.5) 0%, var(--black) 70%);
-  }
-  .hero-content {
-    order: 1;
-    padding: 28px 22px 0;
-    max-width: 100%;
-    z-index: 5;
-  }
-  .hero-photo-wrap {
-    order: 2;
-    position: relative; right: auto; top: auto; transform: none;
-    width: 100%; height: 300px;
-    margin-top: 28px; margin-bottom: 0;
-    display: flex; align-items: flex-start; justify-content: center;
-    padding-top: 0;
-  }
-  .hero-photo-wrap img { width: 52%; height: 100%; object-fit: cover; object-position: top center; }
-  .hero-photo-wrap::after { height: 28%; }
-  .hero-arc { display: none; }
-  .hero-stats {
-    order: 3;
-    position: static;
-    margin-top: 28px;
-    padding: 0 22px 52px;
-    gap: 22px;
-    flex-wrap: wrap;
-  }
-  .stat-div { display: none; }
-  .scroll-hint { display: none; }
+      .nav-links {
+        display: none;
+      }
 
-  /* ── SECTIONS — Padding général ── */
-  #about,
-  #contact { grid-template-columns: 1fr; gap: 48px; padding: 70px 22px; }
+      .nav-right .nav-cv {
+        display: none;
+      }
 
-  #services,
-  #projets,
-  #certifications,
-  #portfolio,
-  #parcours { padding: 70px 22px; }
+      .hamburger {
+        display: flex;
+      }
 
-  /* ── SKILLS — Le problème principal ── */
-  .section-skills { padding: 70px 22px; }
+      /* ── HERO ── */
+      #hero {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: 100vh;
+        padding-top: 70px;
+      }
 
-  .skills-dashboard {
-    grid-template-columns: 1fr;   /* 1 carte par ligne, elles respirent */
-  }
+      .hero-bg {
+        background: radial-gradient(ellipse 90% 60% at 50% 30%, rgba(40, 28, 10, .5) 0%, var(--black) 70%);
+      }
 
-  .skill-card-v2 {
-    padding: 28px 22px;           /* Moins étouffant en largeur */
-    border-radius: 14px;
-  }
+      .hero-content {
+        order: 1;
+        padding: 28px 22px 0;
+        max-width: 100%;
+        z-index: 5;
+      }
 
-  .skill-category-v2 {
-    font-size: 18px;              /* Titre plus lisible */
-  }
+      .hero-photo-wrap {
+        order: 2;
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        width: 100%;
+        height: 300px;
+        margin-top: 28px;
+        margin-bottom: 0;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 0;
+      }
 
-  .tools-full-row {
-    gap: 8px;
-    margin-top: 36px;
-  }
+      .hero-photo-wrap img {
+        width: 52%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+      }
 
-  .tool-badge-premium {
-    min-width: calc(50% - 8px);  /* 2 badges par ligne max */
-    flex: 1 1 calc(50% - 8px);
-    padding: 11px 12px;
-    font-size: 10px;
-  }
+      .hero-photo-wrap::after {
+        height: 28%;
+      }
 
-  /* ── SERVICES ── */
-  .services-dashboard { grid-template-columns: 1fr; }
-  .services-grid { grid-template-columns: 1fr 1fr; }
+      .hero-arc {
+        display: none;
+      }
 
-  .service-card-v3 {
-    padding: 28px 22px;
-    border-radius: 14px;
-  }
+      .hero-stats {
+        order: 3;
+        position: static;
+        margin-top: 28px;
+        padding: 0 22px 52px;
+        gap: 22px;
+        flex-wrap: wrap;
+      }
 
-  /* ── TIMELINE / PARCOURS ── */
-  .timeline-wrapper {
-    padding-left: 28px;
-    margin-top: 36px;
-  }
-  .timeline-wrapper::before { left: 8px; }
-  .timeline-dot { left: -30px; width: 18px; height: 18px; top: 28px; }
-  .timeline-card { padding: 26px 20px; border-radius: 12px; }
-  .timeline-card:hover { transform: none; }  /* désactive le translateX sur mobile */
-  .timeline-title { font-size: 20px; }
+      .stat-div {
+        display: none;
+      }
 
-  /* ── PROJETS (dashboard) ── */
-  .project-dashboard { grid-template-columns: 1fr; }
-  .project-card-db.wide { grid-column: span 1; }
-  .project-card-db.wide .db-list { grid-template-columns: 1fr; }
-  .project-card-db { padding: 28px 20px; border-radius: 14px; }
-  .db-title { font-size: 24px; }
+      .scroll-hint {
+        display: none;
+      }
 
-  .projects-list-grid {
-    grid-template-columns: 1fr;   /* 1 colonne sur mobile */
-    gap: 16px;
-  }
-  .project-card-new { padding: 24px 20px; border-radius: 12px; }
-  .card-title { font-size: 22px; }
+      /* ── SECTIONS — Padding général ── */
+      #about,
+      #contact {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 70px 22px;
+      }
 
-  .projects-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .project-row {
-    grid-template-columns: 38px 1fr auto;
-    gap: 16px;
-    padding: 28px 18px;
-  }
+      #services,
+      #projets,
+      #certifications,
+      #portfolio,
+      #parcours {
+        padding: 70px 22px;
+      }
 
-  /* ── CERTIFICATIONS ── */
-  .certs-container { grid-template-columns: 1fr; }
-  .cert-card-v2 { padding: 24px 20px; border-radius: 12px; }
+      /* ── SKILLS — Le problème principal ── */
+      .section-skills {
+        padding: 70px 22px;
+      }
 
-  /* ── PORTFOLIO ── */
-  .portfolio-grid { grid-template-columns: 1fr; }
-  .portfolio-dashboard-grid { grid-template-columns: 1fr; }
-  .portfolio-card-v4 { border-radius: 10px; }
-  .portfolio-body-v4 { padding: 22px 18px; }
-  .portfolio-title-v4 { font-size: 18px; }
+      .skills-dashboard {
+        grid-template-columns: 1fr;
+        /* 1 carte par ligne, elles respirent */
+      }
 
-  /* ── EXPÉRIENCE ── */
-  .exp-item {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 32px 22px;
-  }
+      .skill-card-v2 {
+        padding: 28px 22px;
+        /* Moins étouffant en largeur */
+        border-radius: 14px;
+      }
 
-  /* ── CONTACT ── */
-  .contact-link { padding: 22px 18px; }
-  .contact-link:hover { padding-left: 26px; }
-  .contact-link-value { font-size: 13px; }
+      .skill-category-v2 {
+        font-size: 18px;
+        /* Titre plus lisible */
+      }
 
-  /* ── FOOTER ── */
-  footer {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-    padding: 28px 22px;
-  }
-  .footer-socials { flex-wrap: wrap; justify-content: center; gap: 16px; }
-}
+      .tools-full-row {
+        gap: 8px;
+        margin-top: 36px;
+      }
 
-/* ── PETIT MOBILE (< 480px) ── */
-@media (max-width: 480px) {
-  .hero-title { font-size: clamp(42px, 13vw, 62px); }
-  .hero-desc { font-size: 13px; }
+      .tool-badge-premium {
+        min-width: calc(50% - 8px);
+        /* 2 badges par ligne max */
+        flex: 1 1 calc(50% - 8px);
+        padding: 11px 12px;
+        font-size: 10px;
+      }
 
-  .btn-primary, .btn-ghost {
-    padding: 12px 20px;
-    font-size: 9px;
-    width: 100%;
-    justify-content: center;
-  }
-  .hero-actions { flex-direction: column; }
+      /* ── SERVICES ── */
+      .services-dashboard {
+        grid-template-columns: 1fr;
+      }
 
-  .about-stats { grid-template-columns: 1fr 1fr; }
-  .about-stat { padding: 22px 16px; }
-  .about-stat .num { font-size: 36px; }
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
 
-  .services-grid { grid-template-columns: 1fr; }
+      .service-card-v3 {
+        padding: 28px 22px;
+        border-radius: 14px;
+      }
 
-  .tool-badge-premium {
-    min-width: 100%;               /* 1 badge par ligne sur très petit écran */
-    flex: 1 1 100%;
-  }
+      /* ── TIMELINE / PARCOURS ── */
+      .timeline-wrapper {
+        padding-left: 28px;
+        margin-top: 36px;
+      }
 
-  .skill-category-v2 { font-size: 16px; }
-  .skill-list-v2 li { font-size: 13px; }
+      .timeline-wrapper::before {
+        left: 8px;
+      }
 
-  .section-title { font-size: clamp(26px, 8vw, 38px); }
+      .timeline-dot {
+        left: -30px;
+        width: 18px;
+        height: 18px;
+        top: 28px;
+      }
 
-  .contact-headline { font-size: clamp(34px, 10vw, 52px); }
+      .timeline-card {
+        padding: 26px 20px;
+        border-radius: 12px;
+      }
 
-  .db-title { font-size: 20px; }
-  .db-header { flex-direction: column; align-items: flex-start; gap: 10px; }
-  .card-header { flex-direction: column; align-items: flex-start; gap: 10px; }
-}
+      .timeline-card:hover {
+        transform: none;
+      }
 
+      /* désactive le translateX sur mobile */
+      .timeline-title {
+        font-size: 20px;
+      }
 
+      /* ── PROJETS (dashboard) ── */
+      .project-dashboard {
+        grid-template-columns: 1fr;
+      }
 
+      .project-card-db.wide {
+        grid-column: span 1;
+      }
 
+      .project-card-db.wide .db-list {
+        grid-template-columns: 1fr;
+      }
 
-</style>
+      .project-card-db {
+        padding: 28px 20px;
+        border-radius: 14px;
+      }
+
+      .db-title {
+        font-size: 24px;
+      }
+
+      .projects-list-grid {
+        grid-template-columns: 1fr;
+        /* 1 colonne sur mobile */
+        gap: 16px;
+      }
+
+      .project-card-new {
+        padding: 24px 20px;
+        border-radius: 12px;
+      }
+
+      .card-title {
+        font-size: 22px;
+      }
+
+      .projects-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .project-row {
+        grid-template-columns: 38px 1fr auto;
+        gap: 16px;
+        padding: 28px 18px;
+      }
+
+      /* ── CERTIFICATIONS ── */
+      .certs-container {
+        grid-template-columns: 1fr;
+      }
+
+      .cert-card-v2 {
+        padding: 24px 20px;
+        border-radius: 12px;
+      }
+
+      /* ── PORTFOLIO ── */
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-card-v4 {
+        border-radius: 10px;
+      }
+
+      .portfolio-body-v4 {
+        padding: 22px 18px;
+      }
+
+      .portfolio-title-v4 {
+        font-size: 18px;
+      }
+
+      /* ── EXPÉRIENCE ── */
+      .exp-item {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 32px 22px;
+      }
+
+      /* ── CONTACT ── */
+      .contact-link {
+        padding: 22px 18px;
+      }
+
+      .contact-link:hover {
+        padding-left: 26px;
+      }
+
+      .contact-link-value {
+        font-size: 13px;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 28px 22px;
+      }
+
+      .footer-socials {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+      }
+    }
+
+    /* ── PETIT MOBILE (< 480px) ── */
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: clamp(42px, 13vw, 62px);
+      }
+
+      .hero-desc {
+        font-size: 13px;
+      }
+
+      .btn-primary,
+      .btn-ghost {
+        padding: 12px 20px;
+        font-size: 9px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-stat {
+        padding: 22px 16px;
+      }
+
+      .about-stat .num {
+        font-size: 36px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tool-badge-premium {
+        min-width: 100%;
+        /* 1 badge par ligne sur très petit écran */
+        flex: 1 1 100%;
+      }
+
+      .skill-category-v2 {
+        font-size: 16px;
+      }
+
+      .skill-list-v2 li {
+        font-size: 13px;
+      }
+
+      .section-title {
+        font-size: clamp(26px, 8vw, 38px);
+      }
+
+      .contact-headline {
+        font-size: clamp(34px, 10vw, 52px);
+      }
+
+      .db-title {
+        font-size: 20px;
+      }
+
+      .db-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- MOBILE MENU DRAWER -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMenu()">À Propos</a>
-  <a href="#services" onclick="closeMenu()">Services</a>
-  <a href="#parcours" onclick="closeMenu()">Parcours</a>
-  <a href="#projets" onclick="closeMenu()">Projets</a>
-  <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
-  <a href="#certifications" onclick="closeMenu()">Certifications</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
-  <div class="mobile-menu-lang">
+  <!-- MOBILE MENU DRAWER -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMenu()">À Propos</a>
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#parcours" onclick="closeMenu()">Parcours</a>
+    <a href="#projets" onclick="closeMenu()">Projets</a>
+    <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+    <a href="#certifications" onclick="closeMenu()">Certifications</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+    <div class="mobile-menu-lang">
 
-   
-  </div>
-</div>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">J·H</a>
-  <ul class="nav-links">
-    <li><a href="#about">À Propos</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#parcours">Parcours</a></li>
-     <li><a href="#projets">Projets</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#certifications">Certifications</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="index-en.html" class="nav-lang" >EN</a>
-    <a href="CV Joslin_Hounkpatin_Chef_De_Projet_Digital.pdf" class="nav-lang nav-cv" target="_blank">CV ↗</a>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg"></div>
-
-  <!-- Photo (desktop: absolute right / mobile: inline top) -->
-  <div class="hero-photo-wrap">
-    <img src="Photo Portfolio.webp" alt="Joslin Hounkpatin">
-  </div>
-
-  
-  
-
-  <!-- Contenu gauche -->
-  <div class="hero-content">
-    <div class="hero-eyebrow">Chef de Projet Digital | Product Owner Tech</div>
-    <h1 class="hero-title">
-      JOSLIN<br>
-      <span class="line2">HOUNKPATIN</span>
-    </h1>
-    <p class="hero-subtitle">IA &amp; Transformation Digitale</p>
-    <p class="hero-desc">Le Pont entre Vision Métier et Réalité Technique <br> Certifié PMI Project Management Ready®</p>
-    <div class="hero-actions">
-      <a href="#projets" class="btn-primary">
-        <span>Voir mes projets</span>
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <a href="CV Joslin_Hounkpatin_Chef_De_Projet_Digital.pdf" class="btn-ghost" target="_blank">Télécharger CV</a>
     </div>
   </div>
 
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div>
-    <div class="section-label">À Propos</div>
-    <h2 class="section-title">Transformer les idées<br>en solutions digitales<br>concrètes</h2>
-    <p class="about-text">Chef de Projet Digital, certifié PMI Project Management Ready®, je combine une expertise en planification et gestion de projets, innovation et développement web pour concevoir des solutions digitales à forte valeur ajoutée. Cette double culture me permet d'agir comme un véritable trait d'union entre les équipes techniques et les parties prenantes métier, en transformant des besoins complexes en solutions concrètes, innovantes et orientées résultats.</p>
-    <div style="margin-top:34px">
-      <a href="#contact" class="btn-primary">
-        <span>Me contacter</span>
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">J·H</a>
+    <ul class="nav-links">
+      <li><a href="#about">À Propos</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="index-en.html" class="nav-lang">EN</a>
+      <a href="CV Joslin_Hounkpatin_Chef_De_Projet_Digital.pdf" class="nav-lang nav-cv" target="_blank">CV ↗</a>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </div>
-  <div>
-    <div class="about-stats">
-      <div class="about-stat"><div class="num">3+</div><div class="lbl">Années d'expérience</div></div>
-      <div class="about-stat"><div class="num">10+</div><div class="lbl">Projets livrés</div></div>
-      <div class="about-stat"><div class="num">6</div><div class="lbl">Certifications IA</div></div>
-      <div class="about-stat"><div class="num">100%</div><div class="lbl">Engagement</div></div>
-    </div>
-  </div>
-</section>
+  </nav>
 
-<!-- COMPÉTENCES -->
-<section id="skills" class="section-skills">
-  <div class="section-label">Expertise technique</div>
-  <h2 class="section-title">COMPÉTENCES CLÉS</h2>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
 
-  <div class="skills-dashboard">
-    
-    <!-- CATEGORIE 1 : PILOTAGE -->
-    <div class="skill-card-v2">
-      <div class="skill-header-v2">
-        <div class="skill-icon-v2">📈</div>
-        <h3 class="skill-category-v2">PILOTAGE & STRATÉGIE</h3>
-      </div>
-      <ul class="skill-list-v2">
-        <li><strong>Cadrage :</strong> Rédaction de cahier des charges (PRD) et définition de vision.</li>
-        <li><strong>Planification :</strong> Gestion de planning (Gantt) et suivi des jalons.</li>
-        <li><strong>Gouvernance :</strong> Gestion des risques et pilotage par KPI de performance.</li>
-        <li><strong>Finance :</strong> Suivi budgétaire et optimisation des ressources.</li>
-      </ul>
+    <!-- Photo (desktop: absolute right / mobile: inline top) -->
+    <div class="hero-photo-wrap">
+      <img src="Photo Portfolio.webp" alt="Joslin Hounkpatin">
     </div>
 
-    <!-- CATEGORIE 2 : PRODUCT OWNER -->
-    <div class="skill-card-v2">
-      <div class="skill-header-v2">
-        <div class="skill-icon-v2">⚙️</div>
-        <h3 class="skill-category-v2">PRODUCT OWNERSHIP</h3>
-      </div>
-      <ul class="skill-list-v2">
-        <li><strong>Agilité :</strong> Maîtrise des méthodologies Scrum et Kanban.</li>
-        <li><strong>Backlog :</strong> Gestion, priorisation et rédaction de User Stories.</li>
-        <li><strong>UX Design :</strong> Conception de parcours utilisateurs et User Flows.</li>
-        <li><strong>Rituels :</strong> Animation de Daily, Sprints Reviews et Retrospectives.</li>
-      </ul>
-    </div>
-
-    <!-- CATEGORIE 3 : IA & INNOVATION -->
-    <div class="skill-card-v2">
-      <div class="skill-header-v2">
-        <div class="skill-icon-v2">🤖</div>
-        <h3 class="skill-category-v2">EXPERTISE IA & INNOVATION</h3>
-      </div>
-      <ul class="skill-list-v2">
-        <li><strong>IA Générative :</strong> LLM, Claude API, Google Gemini & Prompt Engineering.</li>
-        <li><strong>Technique IA :</strong> Model Context Protocol (MCP) et workflows automatisés.</li>
-        <li><strong>Analyse :</strong> Automatisation de processus métiers par l'IA.</li>
-        <li><strong>Change Management :</strong> Acculturation IA et conduite du changement.</li>
-      </ul>
-    </div>
-
-    <!-- CATEGORIE 4 : TECH & DESIGN -->
-    <div class="skill-card-v2">
-      <div class="skill-header-v2">
-        <div class="skill-icon-v2">💻</div>
-        <h3 class="skill-category-v2">TECH & DESIGN</h3>
-      </div>
-      <ul class="skill-list-v2">
-        <li><strong>Front-End :</strong> JavaScript (ES6+), React, Bootstrap & Tailwind.</li>
-        <li><strong>Back-End :</strong> Développement Python et architecture de données.</li>
-        <li><strong>CMS :</strong> Intégration et personnalisation avancée WordPress.</li>
-        <li><strong>Design :</strong> UI/UX Design et prototypage sur Figma.</li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- Petits badges d'outils en bas pour finir le look Dashboard -->
- <div class="tools-full-row">
-  <div class="tool-badge-premium">Notion</div>
-  <div class="tool-badge-premium">Trello</div>
-  <div class="tool-badge-premium">Git</div>
-  <div class="tool-badge-premium">GitHub</div>
-  <div class="tool-badge-premium">Google Workspace</div>
-  <div class="tool-badge-premium">Microsoft Suite</div>
-  
-  
-</div>
 
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-label">Services</div>
-  <h2 class="section-title">GESTION DE PROJET DIGITAL<br>SUR MESURE</h2>
 
-  <div class="services-dashboard">
-    
-    <!-- SERVICE 1 -->
-    <div class="service-card-v3">
-      <div class="service-icon-box">📊</div>
-      <h3 class="service-title-v3">Gestion de Projet Digital</h3>
-      <p class="service-desc-v3">Pilotage agile favorisant la collaboration entre les équipes. Optimisation des processus pour garantir des résultats de qualité.</p>
-      <div class="service-tags-v3">
-        <span class="service-tag-v3">Agile</span>
-        <span class="service-tag-v3">Scrum</span>
-        <span class="service-tag-v3">Kanban</span>
-        <span class="service-tag-v3">KPI</span>
+    <!-- Contenu gauche -->
+    <div class="hero-content">
+      <div class="hero-eyebrow">Chef de Projet Digital | Product Owner Tech</div>
+      <h1 class="hero-title">
+        JOSLIN<br>
+        <span class="line2">HOUNKPATIN</span>
+      </h1>
+      <p class="hero-subtitle">IA &amp; Transformation Digitale</p>
+      <p class="hero-desc">Le Pont entre Vision Métier et Réalité Technique <br> Certifié PMI Project Management Ready®
+      </p>
+      <div class="hero-actions">
+        <a href="#projets" class="btn-primary">
+          <span>Voir mes projets</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+        <a href="CV Joslin_Hounkpatin_Chef_De_Projet_Digital.pdf" class="btn-ghost" target="_blank">Télécharger CV</a>
       </div>
     </div>
 
-    <!-- SERVICE 2 -->
-    <div class="service-card-v3">
-      <div class="service-icon-box">📝</div>
-      <h3 class="service-title-v3">Analyse & Structuration Produit</h3>
-      <p class="service-desc-v3">Traduction des besoins métiers en spécifications claires : cahier des charges, user stories, facilitant le travail des équipes techniques.</p>
-      <div class="service-tags-v3">
-        <span class="service-tag-v3">PRD</span>
-        <span class="service-tag-v3">User Stories</span>
-        <span class="service-tag-v3">User Flows</span>
-        <span class="service-tag-v3">Backlog Produit</span>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div>
+      <div class="section-label">À Propos</div>
+      <h2 class="section-title">Transformer les idées<br>en solutions digitales<br>concrètes</h2>
+      <p class="about-text">Chef de Projet Digital, certifié PMI Project Management Ready®, je combine une expertise en
+        planification et gestion de projets, innovation et développement web pour concevoir des solutions digitales à
+        forte valeur ajoutée. Cette double culture me permet d'agir comme un véritable trait d'union entre les équipes
+        techniques et les parties prenantes métier, en transformant des besoins complexes en solutions concrètes,
+        innovantes et orientées résultats.</p>
+      <div style="margin-top:34px">
+        <a href="#contact" class="btn-primary">
+          <span>Me contacter</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
       </div>
     </div>
-
-    <!-- SERVICE 3 -->
-    <div class="service-card-v3">
-      <div class="service-icon-box">💻</div>
-      <h3 class="service-title-v3">Développement Web</h3>
-      <p class="service-desc-v3">Conception d'interfaces web fonctionnelles et adaptées aux besoins métiers avec maîtrise des frameworks modernes.</p>
-      <div class="service-tags-v3">
-        <span class="service-tag-v3">React</span>
-        <span class="service-tag-v3">Python</span>
-        <span class="service-tag-v3">JavaScript</span>
-        <span class="service-tag-v3">Bootstrap</span>
-        <span class="service-tag-v3">Tailwind</span>
+    <div>
+      <div class="about-stats">
+        <div class="about-stat">
+          <div class="num">3+</div>
+          <div class="lbl">Années d'expérience</div>
+        </div>
+        <div class="about-stat">
+          <div class="num">10+</div>
+          <div class="lbl">Projets livrés</div>
+        </div>
+        <div class="about-stat">
+          <div class="num">6</div>
+          <div class="lbl">Certifications IA</div>
+        </div>
+        <div class="about-stat">
+          <div class="num">100%</div>
+          <div class="lbl">Engagement</div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- SERVICE 4 -->
-    <div class="service-card-v3">
-      <div class="service-icon-box">⚙️</div>
-      <h3 class="service-title-v3">Compréhension Technique & IA</h3>
-      <p class="service-desc-v3">Maîtrise des outils IA et des contraintes techniques pour faciliter la communication entre métier et développeurs.</p>
-      <div class="service-tags-v3">
-        <span class="service-tag-v3">Claude AI</span>
-        <span class="service-tag-v3">Gemini</span>
-        <span class="service-tag-v3">Figma</span>
-         <span class="service-tag-v3">API</span>
-        <span class="service-tag-v3">AI</span>
-          <span class="service-tag-v3">WordPress</span>
-      </div>
-    </div>
+  <!-- COMPÉTENCES -->
+  <section id="skills" class="section-skills">
+    <div class="section-label">Expertise technique</div>
+    <h2 class="section-title">COMPÉTENCES CLÉS</h2>
 
-  </div>
-</section>
+    <div class="skills-dashboard">
 
-<!-- PARCOURS / EXPÉRIENCES -->
-<section id="parcours">
-  <div class="section-label">Parcours</div>
-  <h2 class="section-title">EXPÉRIENCES & FORMATION</h2>
-
-  <div class="timeline-wrapper">
-
-    <!-- ITEM 1 -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-card">
-        <div class="timeline-date">Nov. 2024 - Mai 2025</div>
-        <h3 class="timeline-title">Chef de Projet</h3>
-        <div class="timeline-company">ONG EDUCATION ET ENVIRONNEMENT</div>
-        <ul class="timeline-list">
-          <li><strong>Pilotage stratégique :</strong> Conception d'un projet d'envergure internationale "Résilience Communautaire face aux Défis Climatiques et Océaniques au Bénin", impliquant des acteurs institutionnels et des autorités locales.</li>
-          <li><strong>Ingénierie de projet :</strong> Structuration complète du dossier technique et financier ayant abouti à l'obtention d'un financement auprès du Pulitzer Center.</li>
-          <li><strong>Gestion multi-parties prenantes :</strong> Coordination des flux d'information entre les experts terrain, les bailleurs de fonds et les équipes de communication.</li>
-           <li><strong>Reporting :</strong> Mise en place d'un système de suivi des indicateurs d'impact et rédaction des rapports d'avancement stratégiques.</li>
+      <!-- CATEGORIE 1 : PILOTAGE -->
+      <div class="skill-card-v2">
+        <div class="skill-header-v2">
+          <div class="skill-icon-v2">📈</div>
+          <h3 class="skill-category-v2">PILOTAGE & STRATÉGIE</h3>
+        </div>
+        <ul class="skill-list-v2">
+          <li><strong>Cadrage :</strong> Rédaction de cahier des charges (PRD) et définition de vision.</li>
+          <li><strong>Planification :</strong> Gestion de planning (Gantt) et suivi des jalons.</li>
+          <li><strong>Gouvernance :</strong> Gestion des risques et pilotage par KPI de performance.</li>
+          <li><strong>Finance :</strong> Suivi budgétaire et optimisation des ressources.</li>
         </ul>
-        <div class="timeline-badge">Pulitzer Center Project</div>
       </div>
-    </div>
 
-    <!-- ITEM 2 -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-card">
-        <div class="timeline-date">Déc. 2023 - Nov. 2024</div>
-        <h3 class="timeline-title">Responsable Suivi de Projet Et Développement</h3>
-        <div class="timeline-company">LBASSUR COURTAGE</div>
-        <ul class="timeline-list">
-          <li><strong>Gouvernance SI :</strong> Mise en place et pilotage de tableaux de bord KPI pour assurer la transparence de la performance opérationnelle et économique.</li>
-          <li><strong>Optimisation de Processus :</strong> Audit des flux de travail internes et implémentation de nouveaux outils de pilotage (Gantt, Notion) réduisant les goulots d'étranglement de 20%.</li>
-            <li><strong>Management transverse :</strong> Coordination interservices pour aligner les besoins métiers (assurance/finance) avec les objectifs de développement de l'entreprise.</li>
-              <li><strong>Gestion des risques :</strong> Identification proactive des dérives de planning et mise en place de plans de remédiation.</li>
+      <!-- CATEGORIE 2 : PRODUCT OWNER -->
+      <div class="skill-card-v2">
+        <div class="skill-header-v2">
+          <div class="skill-icon-v2">⚙️</div>
+          <h3 class="skill-category-v2">PRODUCT OWNERSHIP</h3>
+        </div>
+        <ul class="skill-list-v2">
+          <li><strong>Agilité :</strong> Maîtrise des méthodologies Scrum et Kanban.</li>
+          <li><strong>Backlog :</strong> Gestion, priorisation et rédaction de User Stories.</li>
+          <li><strong>UX Design :</strong> Conception de parcours utilisateurs et User Flows.</li>
+          <li><strong>Rituels :</strong> Animation de Daily, Sprints Reviews et Retrospectives.</li>
         </ul>
-        <div class="timeline-badge">Assurance Tech</div>
       </div>
-    </div>
 
-      <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-card">
-        <div class="timeline-date">Mai 2023 - Août 2024</div>
-        <h3 class="timeline-title">Stagiaire | Trésorerie Générale</h3>
-        <div class="timeline-company">MINISTÈRE DES AFFAIRES ÉTRANGÈRES DU BÉNIN</div>
-        <ul class="timeline-list">
-          <li><strong>Analyse Financière :</strong> Contribution active à la production du compte de gestion de la trésorerie (exercice 2022).</li>
-          <li><strong>Gestion Administrative :</strong> Organisation et numérisation des flux documentaires pour optimiser l'accès à l'information budgétaire.</li>
-          <li><strong>Recherche :</strong> Réalisation d'une analyse critique sur la fiabilité des données financières, ayant servi de base à mon mémoire de licence.</li>
-          
+      <!-- CATEGORIE 3 : IA & INNOVATION -->
+      <div class="skill-card-v2">
+        <div class="skill-header-v2">
+          <div class="skill-icon-v2">🤖</div>
+          <h3 class="skill-category-v2">EXPERTISE IA & INNOVATION</h3>
+        </div>
+        <ul class="skill-list-v2">
+          <li><strong>IA Générative :</strong> LLM, Claude API, Google Gemini & Prompt Engineering.</li>
+          <li><strong>Technique IA :</strong> Model Context Protocol (MCP) et workflows automatisés.</li>
+          <li><strong>Analyse :</strong> Automatisation de processus métiers par l'IA.</li>
+          <li><strong>Change Management :</strong> Acculturation IA et conduite du changement.</li>
         </ul>
-        <div class="timeline-badge">Finance Publique</div>
       </div>
-    </div>
 
-    <!-- ITEM 3 : FORMATION -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-card">
-        <div class="timeline-date">Fév. 2026 - En cours</div>
-        <h3 class="timeline-title">Formation Professionnelle en Développement Web </h3>
-        <div class="timeline-company">EIG BENIN</div>
-        <div class="service-tags-v3">
-        <span class="service-tag-v3">JavaScript</span>
-        <span class="service-tag-v3">React</span>
-        <span class="service-tag-v3">Python</span>
-        <span class="service-tag-v3">PHP</span>
-        <span class="service-tag-v3">Laravel</span>
-        <span class="service-tag-v3">Bootstrap</span>
-        <span class="service-tag-v3">Tailwind</span>
-        <span class="service-tag-v3">MySQL</span>
-        <span class="service-tag-v3">WordPress</span>
-        <span class="service-tag-v3">UI/UX Design</span>
-         <span class="service-tag-v3">Architecture de données</span>
-      </div> <br>
-        <div class="timeline-badge">Full-Stack Development</div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-card">
-        <div class="timeline-date">2020 - 2023</div>
-        <h3 class="timeline-title">Licence en Planification et Gestion de Projets </h3>
-        <div class="timeline-company">ENEAM</div>
-        <div class="service-tags-v3">
-        <span class="service-tag-v3">Gestion de Projets</span>
-        <span class="service-tag-v3">Planification stratégique</span>
-        <span class="service-tag-v3">Management des organisations</span>
-        <span class="service-tag-v3">Agile</span>
-        <span class="service-tag-v3">Scrum</span>
-        <span class="service-tag-v3">Kanban</span>
-        <span class="service-tag-v3">KPI</span>
-
-      </div> <br>
-        
-        <div class="timeline-badge">Project Management</div>
-      </div>
-    </div>
-
-
-  </div>
-</section>
-
-<!-- CERTIFICATIONS -->
-
-<section id="certifications">
-  <div class="section-label">Expertise Validée</div>
-  <h2 class="section-title">CERTIFICATIONS</h2>
-
-  <div class="certs-container">
-    
-    <!-- CATEGORIE 1 : IA -->
-    <div class="cert-card-v2">
-      <div class="cert-header-v2">
-        <div class="cert-icon-box">🧠</div>
-        <h3 class="cert-category-title">IA & LLM Specialist</h3>
-      </div>
-      <div class="cert-issuer-v2">Anthropic (Claude)</div>
-      <ul class="cert-list-v2">
-        <li class="cert-item-v2">
-          <div class="cert-name-v2">Claude 101 <span class="cert-check">✔</span></div>
-          <a href="https://verify.skilljar.com/c/ukzipyt978f5" target="_blank" class="cert-verify-link">Vérifier le certificat</a>
-        </li>
-        <li class="cert-item-v2">
-          <div class="cert-name-v2">Claude Code 101 <span class="cert-check">✔</span></div>
-          <a href="https://verify.skilljar.com/c/dwtaoppzvdbu" target="_blank" class="cert-verify-link">Vérifier le certificat</a>
-        </li>
-         <li class="cert-item-v2">
-          <div class="cert-name-v2">Claude in Action<span class="cert-check">✔</span></div>
-          <a href="https://verify.skilljar.com/c/7ysq7rsggxgs" target="_blank" class="cert-verify-link">Vérifier le certificat</a>
-        </li>
-        <li class="cert-item-v2">
-          <div class="cert-name-v2">Building with Claude API <span class="cert-check">✔</span></div>
-          <a href="https://verify.skilljar.com/c/k88zcf6fgynt" target="_blank" class="cert-verify-link">Vérifier le certificat</a>
-        </li>
-        <li class="cert-item-v2">
-          <div class="cert-name-v2">Model Context Protocol (MCP) <span class="cert-check">✔</span></div>
-          <a href="https://verify.skilljar.com/c/2397dvomht47" target="_blank" class="cert-verify-link">Vérifier le certificat</a>
-        </li>
-         <li class="cert-item-v2">
-          <div class="cert-name-v2">AI Fluency Framework & Foundations<span class="cert-check">✔</span></div>
-          <a href="https://verify.skilljar.com/c/nekbe59yr26t" target="_blank" class="cert-verify-link">Vérifier le certificat</a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- CATEGORIE 2 : MANAGEMENT -->
-    <div class="cert-card-v2">
-      <div class="cert-header-v2">
-        <div class="cert-icon-box">📊</div>
-        <h3 class="cert-category-title">Project Management</h3>
-      </div>
-      <div class="cert-issuer-v2">PROJECT MANAGEMENT INSTITUTE & CURSA</div>
-      <ul class="cert-list-v2">
-        <li class="cert-item-v2">
-          <div class="cert-name-v2">PMI Project Management Ready®</div>
-          <a href="https://www.certiport.com/portal/Pages/PrintTranscriptInfo.aspx?action=Cert&id=457&cvid=+Bia2v5dw+W8ugmzWgPkIg==" target="_blank" class="cert-verify-link">Vérifier le certificat</a>
-        </li>
-        <li class="cert-item-v2">
-          <div class="cert-name-v2">Fondamentaux Agile & Scrum</div>
-          <a href="https://cursa.app/fr/mon-certificat/cert47b0d436c180d3367ec18e081c398d29" target="_blank" class="cert-verify-link">Vérifier le certificat</a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- CATEGORIE 3 : TECH -->
-    <div class="cert-card-v2">
-      <div class="cert-header-v2">
-        <div class="cert-icon-box">🛡</div>
-        <h3 class="cert-category-title">Tech Foundations</h3>
-      </div>
-      <div class="cert-issuer-v2">Cisco & Python Institute</div>
-      <ul class="cert-list-v2">
-        <li class="cert-item-v2">
-          <div class="cert-name-v2">Introduction to Cybersecurity</div>
-          <a href="https://www.credly.com/badges/c8b4ada4-33bf-41fb-b19e-e5e076218dd8/public_url" target="_blank" class="cert-verify-link">Vérifier le badge</a>
-        </li>
-        <li class="cert-item-v2">
-          <div class="cert-name-v2">Python Essentials 1</div>
-          <a href="https://www.credly.com/badges/ca3eb82a-da60-4e69-b29b-fb1faf2855a1/public_url" class="cert-verify-link">Vérifier le badge</a>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<!-- PROJETS TECH (liste) -->
-<section id="projets">
-  <div class="section-label">Réalisations Phares</div>
-  <h2 class="section-title">PROJETS TECH</h2>
-
-  <div class="project-dashboard">
-    
-    <!-- PROJET 1 : KLIRÔ -->
-    <div class="project-card-db">
-      <div class="db-header">
-        <span class="db-badge">Product Owner</span>
-    
-      </div>
-      <h3 class="db-title">Projet "Klirô"</h3>
-      <p class="db-subtitle">Lavage auto avec technologie Waterless | Hackathon EIG</p>
-      <ul class="db-list">
-        <li><strong>Vision Produit :</strong> Définition du positionnement "Premium Tech" et de la stratégie de monétisation (abonnements et paiements mobiles avec incentives).</li>
-        <li><strong>Management d'équipe :</strong> Direction de 15+ designers répartis en 3 pôles. Arbitrage sur l'identité de marque.</li>
-        <li><strong>Optimisation UX :</strong>  Conception d'un parcours de réservation fluide garantissant une conversion en moins de 2 minutes.</li>
-        <li><strong>Livrable :</strong> Design System complet de 30 pages et prototype haute-fidélité  validé par un jury d'experts.</li>
-      </ul>
-    </div>
-
-    <!-- PROJET 2 : HÔTEL SEGURO -->
-    <div class="project-card-db">
-      <div class="db-header">
-        <span class="db-badge">Lead Dev Front-End & Product Manager</span>
-      
-      </div>
-      <h3 class="db-title">Hôtel Seguro</h3>
-      <p class="db-subtitle">Booking Platform</p>
-      <ul class="db-list">
-        <li><strong>Cadrage & Planification :</strong> Rédaction complète du cahier des charges fonctionnel et technique puis élaboration du planning opérationnel pour garantir la livraison du MVP dans un délai record de 12 jours.</li>
-        <li><strong>Architecture Front-End :</strong> Conception et développement d’une architecture MVP utilisant Vanilla JavaScript et Bootstrap, assurant une interface premium et 100% responsive.</li>
-        <li><strong>Logique Métier & Data :</strong> Implémentation d'un moteur de réservation dynamique avec gestion de la persistance des données via LocalStorage, permettant une synchronisation en temps réel avec le Dashboard Administrateur.</li>
-        <li><strong>Interconnexion & APIs :</strong> Automatisation des flux de notifications (confirmations instantanées pour les clients et l'hôtel) grâce à l'intégration des services EmailJS et Formspree.</li>
-      </ul>
-    </div>
-
-    <!-- PROJET 3 : ORBIT PRO (Large) -->
-    <div class="project-card-db wide">
-      <div class="db-header">
-        <span class="db-badge">Lead Developer & Product Owner</span>
-
-      </div>
-      <h3 class="db-title">ORBIT PRO</h3>
-      <p class="db-subtitle">Application SaaS de Pilotage de Projet Assistée par IA</p>
-      <ul class="db-list">
-        <li><strong>Conception Produit & IA :</strong> Intégration de Google Gemini API pour analyses stratégiques assistées par IA.</li>
-        <li><strong>Architecture Front-End :</strong> Développement d'interfaces interactives et 100% responsives en Vanilla JavaScript et Bootstrap.</li>
-        <li><strong>Analyse & Décision :</strong> Évaluation de la corrélation Budget/Délais/Avancement pour faciliter le pilotage.</li>
-        <li><strong>Visualisation de Données :</strong> Tableaux de bord analytiques dynamiques via ApexCharts.</li>
-        <li><strong>Reporting & Export :</strong> Fonctionnalités d'exportation PDF (jsPDF) et Excel (SheetJS) pour les parties prenantes.</li>
-        <li><strong>Open Source :</strong> Publication avec documentation complète pour la communauté.</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<!-- PORTFOLIO CARDS (identiques au site original) -->
-<section id="portfolio">
-  <div class="section-label">Travaux Récents</div>
-  <h2 class="section-title">PORTFOLIO DIGITAL</h2>
-
-  <div class="portfolio-dashboard-grid">
-    
-    <!-- PROJET 1 : HÔTEL SEGURO -->
-    <div class="portfolio-card-v4">
-      <div class="portfolio-img-box">
-        <img src="hotel seguro.webp" alt="Hôtel Seguro">
-      </div>
-      <div class="portfolio-body-v4">
-        <div class="portfolio-type-v4">Web Application</div>
-        <h3 class="portfolio-title-v4">Hôtel SEGURO | Système de Réservation & Gestion</h3>
-        <p class="portfolio-desc-v4">Application web de réservation hôtelière interactive intégrant un moteur de calcul dynamique, un système de notification en temps réel et un tableau de bord administrateur complet.</p>
-        <div class="portfolio-tags-v4">
-          <span class="portfolio-tag-v4">HTML5</span><span class="portfolio-tag-v4">CSS3</span><span class="portfolio-tag-v4">Bootstrap</span><span class="portfolio-tag-v4">JavaScript</span><span class="portfolio-tag-v4">LocalStorage</span><span class="portfolio-tag-v4">EmailJS</span><span class="portfolio-tag-v4">jsPDF</span><span class="portfolio-tag-v4">SheetJS</span>
+      <!-- CATEGORIE 4 : TECH & DESIGN -->
+      <div class="skill-card-v2">
+        <div class="skill-header-v2">
+          <div class="skill-icon-v2">💻</div>
+          <h3 class="skill-category-v2">TECH & DESIGN</h3>
         </div>
-        <div class="portfolio-links-v4">
-          <a href="https://hotelseguro.netlify.app/" target="_blank" class="portfolio-link-v4">
-            Visiter le site <span>↗</span>
-          </a>
-          <a href="https://drive.google.com/file/d/1J1xnIX_s6YmlrQm0tPGrOjXF5-FN6LpL/preview" class="portfolio-link-v4" style="color: var(--muted);">Voir la démo 🎥</a>
-        </div>
+        <ul class="skill-list-v2">
+          <li><strong>Front-End :</strong> JavaScript (ES6+), React, Bootstrap & Tailwind.</li>
+          <li><strong>Back-End :</strong> Développement Python et architecture de données.</li>
+          <li><strong>CMS :</strong> Intégration et personnalisation avancée WordPress.</li>
+          <li><strong>Design :</strong> UI/UX Design et prototypage sur Figma.</li>
+        </ul>
       </div>
+
     </div>
 
-                
-    <!-- PROJET 2 : ORBIT PRO -->
-    <div class="portfolio-card-v4">
-      <div class="portfolio-img-box">
-        <img src="orbit-fr.webp" alt="Orbit PRO">
-      </div>
-      <div class="portfolio-body-v4">
-        <div class="portfolio-type-v4">Web Application</div>
-        <h3 class="portfolio-title-v4">ORBIT PRO | Moteur de Pilotage de Projet Assisté par l'IA</h3>
-        <p class="portfolio-desc-v4">Solution analytique SaaS de nouvelle génération conçue pour le pilotage stratégique de projets. Orbit PRO fusionne la méthode EVM avec l'IA pour offrir une visibilité 360° sur la corrélation Temps/Budget/Avancement. <br> <br>
-<strong>Projet Open Source :</strong> Disponible pour test et contribution</p>
-        <div class="portfolio-tags-v4">
-          <span class="portfolio-tag-v4">JavaScript</span><span class="portfolio-tag-v4">Google Gemini API</span><span class="portfolio-tag-v4">ApexCharts</span><span class="portfolio-tag-v4">Bootstrap</span><span class="portfolio-tag-v4">LocalStorage</span><span class="portfolio-tag-v4">HTML2PDF.JS</span><span class="portfolio-tag-v4">Lucide Icons</span><span class="portfolio-tag-v4">SheetJS</span>
-        </div>
-        <div class="portfolio-links-v4">
-          <a href="https://orbit-pro-five.vercel.app" target="_blank" class="portfolio-link-v4">
-            Visiter le site <span>↗</span>
-          </a>
-         <a href="https://github.com/Joslin-Hounkpatin/ORBIT-PRO" target="_blank" class="portfolio-link-v4">
-  <i class="ri-github-fill"></i> Voir le code
-</a>
-        </div>
-      </div>
+    <!-- Petits badges d'outils en bas pour finir le look Dashboard -->
+    <div class="tools-full-row">
+      <div class="tool-badge-premium">Notion</div>
+      <div class="tool-badge-premium">Trello</div>
+      <div class="tool-badge-premium">Git</div>
+      <div class="tool-badge-premium">GitHub</div>
+      <div class="tool-badge-premium">Google Workspace</div>
+      <div class="tool-badge-premium">Microsoft Suite</div>
+
+
     </div>
 
-    <!-- PROJET 3 : WORDPRESS -->
-    <div class="portfolio-card-v4">
-      <div class="portfolio-img-box">
-        <img src="Site WordPress.webp" alt="Complexe Hôtelier">
-      </div>
-      <div class="portfolio-body-v4">
-        <div class="portfolio-type-v4">CMS Development</div>
-        <h3 class="portfolio-title-v4">Complexe Hôtelier | Vitrine Digitale de Prestige</h3>
-        <p class="portfolio-desc-v4">Conception d'une plateforme vitrine sous WordPress avec une architecture d'information optimisée pour l'UX/UI. L'accent a été mis sur une architecture d'information claire et un design émotionnel pour maximiser les réservations directes.</p>
-        <div class="portfolio-tags-v4">
-          <span class="portfolio-tag-v4">WordPress</span><span class="portfolio-tag-v4">Astra Pro</span><span class="portfolio-tag-v4">SEO</span><span class="portfolio-tag-v4">Custom CSS</span><span class="portfolio-tag-v4">Spectra</span><span class="portfolio-tag-v4">Responsive Design</span>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="section-label">Services</div>
+      <h2 class="section-title">GESTION DE PROJET DIGITAL<br>SUR MESURE</h2>
+
+      <div class="services-dashboard">
+
+        <!-- SERVICE 1 -->
+        <div class="service-card-v3">
+          <div class="service-icon-box">📊</div>
+          <h3 class="service-title-v3">Gestion de Projet Digital</h3>
+          <p class="service-desc-v3">Pilotage agile favorisant la collaboration entre les équipes. Optimisation des
+            processus pour garantir des résultats de qualité.</p>
+          <div class="service-tags-v3">
+            <span class="service-tag-v3">Agile</span>
+            <span class="service-tag-v3">Scrum</span>
+            <span class="service-tag-v3">Kanban</span>
+            <span class="service-tag-v3">KPI</span>
+          </div>
         </div>
-        <div class="portfolio-links-v4">
-          <a href="https://js.logtech.tech" target="_blank" class="portfolio-link-v4">
-            Visiter le site <span>↗</span>
-          </a>
+
+        <!-- SERVICE 2 -->
+        <div class="service-card-v3">
+          <div class="service-icon-box">📝</div>
+          <h3 class="service-title-v3">Analyse & Structuration Produit</h3>
+          <p class="service-desc-v3">Traduction des besoins métiers en spécifications claires : cahier des charges, user
+            stories, facilitant le travail des équipes techniques.</p>
+          <div class="service-tags-v3">
+            <span class="service-tag-v3">PRD</span>
+            <span class="service-tag-v3">User Stories</span>
+            <span class="service-tag-v3">User Flows</span>
+            <span class="service-tag-v3">Backlog Produit</span>
+          </div>
         </div>
+
+        <!-- SERVICE 3 -->
+        <div class="service-card-v3">
+          <div class="service-icon-box">💻</div>
+          <h3 class="service-title-v3">Développement Web</h3>
+          <p class="service-desc-v3">Conception d'interfaces web fonctionnelles et adaptées aux besoins métiers avec
+            maîtrise des frameworks modernes.</p>
+          <div class="service-tags-v3">
+            <span class="service-tag-v3">React</span>
+            <span class="service-tag-v3">Python</span>
+            <span class="service-tag-v3">JavaScript</span>
+            <span class="service-tag-v3">Bootstrap</span>
+            <span class="service-tag-v3">Tailwind</span>
+          </div>
+        </div>
+
+        <!-- SERVICE 4 -->
+        <div class="service-card-v3">
+          <div class="service-icon-box">⚙️</div>
+          <h3 class="service-title-v3">Compréhension Technique & IA</h3>
+          <p class="service-desc-v3">Maîtrise des outils IA et des contraintes techniques pour faciliter la
+            communication entre métier et développeurs.</p>
+          <div class="service-tags-v3">
+            <span class="service-tag-v3">Claude AI</span>
+            <span class="service-tag-v3">Gemini</span>
+            <span class="service-tag-v3">Figma</span>
+            <span class="service-tag-v3">API</span>
+            <span class="service-tag-v3">AI</span>
+            <span class="service-tag-v3">WordPress</span>
+          </div>
+        </div>
+
       </div>
-    </div>
+    </section>
 
-  </div>
-</section>
+    <!-- PARCOURS / EXPÉRIENCES -->
+    <section id="parcours">
+      <div class="section-label">Parcours</div>
+      <h2 class="section-title">EXPÉRIENCES & FORMATION</h2>
+
+      <div class="timeline-wrapper">
+
+        <!-- ITEM 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-date">Nov. 2024 - Mai 2025</div>
+            <h3 class="timeline-title">Chef de Projet</h3>
+            <div class="timeline-company">ONG EDUCATION ET ENVIRONNEMENT</div>
+            <ul class="timeline-list">
+              <li><strong>Pilotage stratégique :</strong> Conception d'un projet d'envergure internationale "Résilience
+                Communautaire face aux Défis Climatiques et Océaniques au Bénin", impliquant des acteurs institutionnels
+                et des autorités locales.</li>
+              <li><strong>Ingénierie de projet :</strong> Structuration complète du dossier technique et financier ayant
+                abouti à l'obtention d'un financement auprès du Pulitzer Center.</li>
+              <li><strong>Gestion multi-parties prenantes :</strong> Coordination des flux d'information entre les
+                experts terrain, les bailleurs de fonds et les équipes de communication.</li>
+              <li><strong>Reporting :</strong> Mise en place d'un système de suivi des indicateurs d'impact et rédaction
+                des rapports d'avancement stratégiques.</li>
+            </ul>
+            <div class="timeline-badge">Pulitzer Center Project</div>
+          </div>
+        </div>
+
+        <!-- ITEM 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-date">Déc. 2023 - Nov. 2024</div>
+            <h3 class="timeline-title">Responsable Suivi de Projet Et Développement</h3>
+            <div class="timeline-company">LBASSUR</div>
+            <ul class="timeline-list">
+              <li><strong>Gouvernance SI :</strong> Mise en place et pilotage de tableaux de bord KPI pour assurer la
+                transparence de la performance opérationnelle et économique.</li>
+              <li><strong>Optimisation de Processus :</strong> Audit des flux de travail internes et implémentation de
+                nouveaux outils de pilotage (Gantt, Notion) réduisant les goulots d'étranglement de 20%.</li>
+              <li><strong>Management transverse :</strong> Coordination interservices pour aligner les besoins métiers
+                (assurance/finance) avec les objectifs de développement de l'entreprise.</li>
+              <li><strong>Gestion des risques :</strong> Identification proactive des dérives de planning et mise en
+                place de plans de remédiation.</li>
+            </ul>
+            <div class="timeline-badge">Assurance Tech</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-date">Mai 2023 - Août 2024</div>
+            <h3 class="timeline-title">Stagiaire | Trésorerie Générale</h3>
+            <div class="timeline-company">MINISTÈRE DES AFFAIRES ÉTRANGÈRES DU BÉNIN</div>
+            <ul class="timeline-list">
+              <li><strong>Analyse Financière :</strong> Contribution active à la production du compte de gestion de la
+                trésorerie (exercice 2022).</li>
+              <li><strong>Gestion Administrative :</strong> Organisation et numérisation des flux documentaires pour
+                optimiser l'accès à l'information budgétaire.</li>
+              <li><strong>Recherche :</strong> Réalisation d'une analyse critique sur la fiabilité des données
+                financières, ayant servi de base à mon mémoire de licence.</li>
+
+            </ul>
+            <div class="timeline-badge">Finance Publique</div>
+          </div>
+        </div>
+
+        <!-- ITEM 3 : FORMATION -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-date">Fév. 2026 - En cours</div>
+            <h3 class="timeline-title">Formation Professionnelle en Développement Web </h3>
+            <div class="timeline-company">EIG BENIN</div>
+            <div class="service-tags-v3">
+              <span class="service-tag-v3">JavaScript</span>
+              <span class="service-tag-v3">React</span>
+              <span class="service-tag-v3">Python</span>
+              <span class="service-tag-v3">PHP</span>
+              <span class="service-tag-v3">Laravel</span>
+              <span class="service-tag-v3">Bootstrap</span>
+              <span class="service-tag-v3">Tailwind</span>
+              <span class="service-tag-v3">MySQL</span>
+              <span class="service-tag-v3">WordPress</span>
+              <span class="service-tag-v3">UI/UX Design</span>
+              <span class="service-tag-v3">Architecture de données</span>
+            </div> <br>
+            <div class="timeline-badge">Full-Stack Development</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-date">2020 - 2023</div>
+            <h3 class="timeline-title">Licence en Planification et Gestion de Projets </h3>
+            <div class="timeline-company">ENEAM</div>
+            <div class="service-tags-v3">
+              <span class="service-tag-v3">Gestion de Projets</span>
+              <span class="service-tag-v3">Planification stratégique</span>
+              <span class="service-tag-v3">Management des organisations</span>
+              <span class="service-tag-v3">Agile</span>
+              <span class="service-tag-v3">Scrum</span>
+              <span class="service-tag-v3">Kanban</span>
+              <span class="service-tag-v3">KPI</span>
+
+            </div> <br>
+
+            <div class="timeline-badge">Project Management</div>
+          </div>
+        </div>
 
 
-<!-- CONTACT -->
-<section id="contact">
-  <div>
-    <div class="section-label">Contact</div>
-    <h2 class="contact-headline">TRAVAILLONS<br><em>ENSEMBLE</em></h2>
-    <p class="contact-sub">Je suis à la recherche d'expériences challengeantes en gestion de projet digital et produit.<br>N'hésitez pas à me contacter pour échanger.</p>
-  </div>
-  <div class="contact-links">
-    <a href="https://wa.me/22961571207" class="contact-link" target="_blank">
-      <div><div class="contact-link-label">WhatsApp</div><div class="contact-link-value">+229 01 61 57 12 07</div></div>
-      <div class="contact-link-arrow">→</div>
-    </a>
-    <a href="mailto:joslinhounkpatin@gmail.com" class="contact-link">
-      <div><div class="contact-link-label">Email</div><div class="contact-link-value">joslinhounkpatin@gmail.com</div></div>
-      <div class="contact-link-arrow">→</div>
-    </a>
-    <a href="https://www.linkedin.com/in/joslin-hounkpatin-3b406b322" class="contact-link" target="_blank">
-      <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-value">Joslin Hounkpatin</div></div>
-      <div class="contact-link-arrow">→</div>
-    </a>
-    <a href="https://github.com/Joslin-Hounkpatin" class="contact-link" target="_blank">
-      <div><div class="contact-link-label">GitHub</div><div class="contact-link-value">Joslin-Hounkpatin</div></div>
-      <div class="contact-link-arrow">→</div>
-    </a>
-  </div>
-</section>
+      </div>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-  <span class="footer-copy">© 2026 Joslin Hounkpatin. Tous droits réservés.</span>
-  <div class="footer-socials">
-    <a href="https://github.com/Joslin-Hounkpatin" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/joslin-hounkpatin-3b406b322" target="_blank">LinkedIn</a>
-    <a href="https://wa.me/22961571207" target="_blank">WhatsApp</a>
-    <a href="https://www.facebook.com/share/1DrFRYJVXC/?mibextid=wwXIfr" target="_blank">Facebook</a>
-  </div>
-</footer>
+    <!-- CERTIFICATIONS -->
 
-<script>
-function toggleMenu(){
-  const menu=document.getElementById('mobileMenu');
-  const btn=document.getElementById('hamburger');
-  menu.classList.toggle('open');
-  btn.classList.toggle('open');
-  document.body.style.overflow=menu.classList.contains('open')?'hidden':'';
-}
-function closeMenu(){
-  document.getElementById('mobileMenu').classList.remove('open');
-  document.getElementById('hamburger').classList.remove('open');
-  document.body.style.overflow='';
-}
-</script>
+    <section id="certifications">
+      <div class="section-label">Expertise Validée</div>
+      <h2 class="section-title">CERTIFICATIONS</h2>
+
+      <div class="certs-container">
+
+        <!-- CATEGORIE 1 : IA -->
+        <div class="cert-card-v2">
+          <div class="cert-header-v2">
+            <div class="cert-icon-box">🧠</div>
+            <h3 class="cert-category-title">IA & LLM Specialist</h3>
+          </div>
+          <div class="cert-issuer-v2">Anthropic (Claude)</div>
+          <ul class="cert-list-v2">
+            <li class="cert-item-v2">
+              <div class="cert-name-v2">Claude 101 <span class="cert-check">✔</span></div>
+              <a href="https://verify.skilljar.com/c/ukzipyt978f5" target="_blank" class="cert-verify-link">Vérifier le
+                certificat</a>
+            </li>
+            <li class="cert-item-v2">
+              <div class="cert-name-v2">Claude Code 101 <span class="cert-check">✔</span></div>
+              <a href="https://verify.skilljar.com/c/dwtaoppzvdbu" target="_blank" class="cert-verify-link">Vérifier le
+                certificat</a>
+            </li>
+            <li class="cert-item-v2">
+              <div class="cert-name-v2">Claude in Action<span class="cert-check">✔</span></div>
+              <a href="https://verify.skilljar.com/c/7ysq7rsggxgs" target="_blank" class="cert-verify-link">Vérifier le
+                certificat</a>
+            </li>
+            <li class="cert-item-v2">
+              <div class="cert-name-v2">Building with Claude API <span class="cert-check">✔</span></div>
+              <a href="https://verify.skilljar.com/c/k88zcf6fgynt" target="_blank" class="cert-verify-link">Vérifier le
+                certificat</a>
+            </li>
+            <li class="cert-item-v2">
+              <div class="cert-name-v2">Model Context Protocol (MCP) <span class="cert-check">✔</span></div>
+              <a href="https://verify.skilljar.com/c/2397dvomht47" target="_blank" class="cert-verify-link">Vérifier le
+                certificat</a>
+            </li>
+            <li class="cert-item-v2">
+              <div class="cert-name-v2">AI Fluency Framework & Foundations<span class="cert-check">✔</span></div>
+              <a href="https://verify.skilljar.com/c/nekbe59yr26t" target="_blank" class="cert-verify-link">Vérifier le
+                certificat</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CATEGORIE 2 : MANAGEMENT -->
+        <div class="cert-card-v2">
+          <div class="cert-header-v2">
+            <div class="cert-icon-box">📊</div>
+            <h3 class="cert-category-title">Project Management</h3>
+          </div>
+          <div class="cert-issuer-v2">PROJECT MANAGEMENT INSTITUTE & CURSA</div>
+          <ul class="cert-list-v2">
+            <li class="cert-item-v2">
+              <div class="cert-name-v2">PMI Project Management Ready®</div>
+              <a href="https://www.certiport.com/portal/Pages/PrintTranscriptInfo.aspx?action=Cert&id=457&cvid=+Bia2v5dw+W8ugmzWgPkIg=="
+                target="_blank" class="cert-verify-link">Vérifier le certificat</a>
+            </li>
+            <li class="cert-item-v2">
+              <div class="cert-name-v2">Fondamentaux Agile & Scrum</div>
+              <a href="https://cursa.app/fr/mon-certificat/cert47b0d436c180d3367ec18e081c398d29" target="_blank"
+                class="cert-verify-link">Vérifier le certificat</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CATEGORIE 3 : TECH -->
+        <div class="cert-card-v2">
+          <div class="cert-header-v2">
+            <div class="cert-icon-box">🛡</div>
+            <h3 class="cert-category-title">Tech Foundations</h3>
+          </div>
+          <div class="cert-issuer-v2">Cisco & Python Institute</div>
+          <ul class="cert-list-v2">
+            <li class="cert-item-v2">
+              <div class="cert-name-v2">Introduction to Cybersecurity</div>
+              <a href="https://www.credly.com/badges/c8b4ada4-33bf-41fb-b19e-e5e076218dd8/public_url" target="_blank"
+                class="cert-verify-link">Vérifier le badge</a>
+            </li>
+            <li class="cert-item-v2">
+              <div class="cert-name-v2">Python Essentials 1</div>
+              <a href="https://www.credly.com/badges/ca3eb82a-da60-4e69-b29b-fb1faf2855a1/public_url"
+                class="cert-verify-link">Vérifier le badge</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJETS TECH (liste) -->
+    <section id="projets">
+      <div class="section-label">Réalisations Phares</div>
+      <h2 class="section-title">PROJETS TECH</h2>
+
+      <div class="project-dashboard">
+
+        <!-- PROJET 1 : KLIRÔ -->
+        <div class="project-card-db">
+          <div class="db-header">
+            <span class="db-badge">Product Owner</span>
+
+          </div>
+          <h3 class="db-title">Projet "Klirô"</h3>
+          <p class="db-subtitle">Lavage auto avec technologie Waterless | Hackathon EIG</p>
+          <ul class="db-list">
+            <li><strong>Vision Produit :</strong> Définition du positionnement "Premium Tech" et de la stratégie de
+              monétisation (abonnements et paiements mobiles avec incentives).</li>
+            <li><strong>Management d'équipe :</strong> Direction de 15+ designers répartis en 3 pôles. Arbitrage sur
+              l'identité de marque.</li>
+            <li><strong>Optimisation UX :</strong> Conception d'un parcours de réservation fluide garantissant une
+              conversion en moins de 2 minutes.</li>
+            <li><strong>Livrable :</strong> Design System complet de 30 pages et prototype haute-fidélité validé par un
+              jury d'experts.</li>
+          </ul>
+        </div>
+
+        <!-- PROJET 2 : HÔTEL SEGURO -->
+        <div class="project-card-db">
+          <div class="db-header">
+            <span class="db-badge">Lead Dev Front-End & Product Manager</span>
+
+          </div>
+          <h3 class="db-title">Hôtel Seguro</h3>
+          <p class="db-subtitle">Booking Platform</p>
+          <ul class="db-list">
+            <li><strong>Cadrage & Planification :</strong> Rédaction complète du cahier des charges fonctionnel et
+              technique puis élaboration du planning opérationnel pour garantir la livraison du MVP dans un délai record
+              de 12 jours.</li>
+            <li><strong>Architecture Front-End :</strong> Conception et développement d’une architecture MVP utilisant
+              Vanilla JavaScript et Bootstrap, assurant une interface premium et 100% responsive.</li>
+            <li><strong>Logique Métier & Data :</strong> Implémentation d'un moteur de réservation dynamique avec
+              gestion de la persistance des données via LocalStorage, permettant une synchronisation en temps réel avec
+              le Dashboard Administrateur.</li>
+            <li><strong>Interconnexion & APIs :</strong> Automatisation des flux de notifications (confirmations
+              instantanées pour les clients et l'hôtel) grâce à l'intégration des services EmailJS et Formspree.</li>
+          </ul>
+        </div>
+
+        <!-- PROJET 3 : ORBIT PRO -->
+        <div class="project-card-db">
+          <div class="db-header">
+            <span class="db-badge">Lead Developer & Product Owner</span>
+
+          </div>
+          <h3 class="db-title">ORBIT PRO</h3>
+          <p class="db-subtitle">Application SaaS de Pilotage de Projet Assistée par IA</p>
+          <ul class="db-list">
+            <li><strong>Conception Produit & IA :</strong> Intégration de Google Gemini API pour analyses stratégiques
+              assistées par IA.</li>
+            <li><strong>Architecture Front-End :</strong> Développement d'interfaces interactives et 100% responsives en
+              Vanilla JavaScript et Bootstrap.</li>
+            <li><strong>Analyse & Décision :</strong> Évaluation de la corrélation Budget/Délais/Avancement pour
+              faciliter le pilotage.</li>
+            <li><strong>Visualisation de Données :</strong> Tableaux de bord analytiques dynamiques via ApexCharts.</li>
+            <li><strong>Reporting & Export :</strong> Fonctionnalités d'exportation PDF (jsPDF) et Excel (SheetJS) pour
+              les parties prenantes.</li>
+            <li><strong>Open Source :</strong> Publication avec documentation complète pour la communauté.</li>
+          </ul>
+        </div>
+
+
+
+        <div class="project-card-db">
+          <div class="db-header">
+            <span class="db-badge">Architecte IA & Développeur MCP</span>
+
+          </div>
+          <h3 class="db-title">AGENT IA </h3>
+          <p class="db-subtitle">Automatisation de facturation bout-en-bout via Claude MCP</p>
+
+          <p class="portfolio-desc-v4">Conception et déploiement d'un agent IA de facturation bout-en-bout, connecté à
+            Claude via le Model Context Protocol (MCP). L'agent orchestre 3 outils enchaînés : lecture dynamique d'une
+            grille tarifaire JSON, génération de factures PDF au design professionnel, et envoi automatisé par email via
+            SMTP Brevo sans intervention manuelle.</p>
+
+          <ul class="db-list">
+
+            <li><strong>Architecture MCP :</strong>
+              Conception de 3 outils natifs (lire_tarifs,
+              creer_facture_pdf, envoyer_facture_email)
+              exposés et pilotés par Claude.</li>
+            <li><strong>Automatisation bout-en-bout :</strong>
+              Flux 100% automatisé via l'orchestration IA, de la saisie client à la réception email.</li>
+            <li><strong>Configuration dynamique :</strong>
+              Tarifs, conditions et identité freelance
+              centralisés en JSON, modifiables sans
+              toucher au code.</li>
+            <li><strong>Intégration SMTP :</strong>
+              Envoi automatique de la facture PDF via Brevo,
+              avec objet et corps personnalisables.</li>
+          </ul>
+
+          <div class="portfolio-links-v4">
+
+            <a href="https://drive.google.com/file/d/1ovN2_D1fGkcvAQRXZpUTdNb9XFQMPv-N/preview"
+              class="portfolio-link-v4" style="color: var(--muted);">Voir le workflow 🎥</a>
+          </div>
+
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- PORTFOLIO CARDS -->
+    <section id="portfolio">
+      <div class="section-label">Travaux Récents</div>
+      <h2 class="section-title">PORTFOLIO DIGITAL</h2>
+
+      <div class="portfolio-dashboard-grid">
+
+        <!-- PROJET 1 : HÔTEL SEGURO -->
+        <div class="portfolio-card-v4">
+          <div class="portfolio-img-box">
+            <img src="hotel seguro.webp" alt="Hôtel Seguro">
+          </div>
+          <div class="portfolio-body-v4">
+            <div class="portfolio-type-v4">Web Application</div>
+            <h3 class="portfolio-title-v4">Hôtel SEGURO | Système de Réservation & Gestion</h3>
+            <p class="portfolio-desc-v4">Application web de réservation hôtelière interactive intégrant un moteur de
+              calcul dynamique, un système de notification en temps réel et un tableau de bord administrateur complet.
+            </p>
+            <div class="portfolio-tags-v4">
+              <span class="portfolio-tag-v4">HTML5</span><span class="portfolio-tag-v4">CSS3</span><span
+                class="portfolio-tag-v4">Bootstrap</span><span class="portfolio-tag-v4">JavaScript</span><span
+                class="portfolio-tag-v4">LocalStorage</span><span class="portfolio-tag-v4">EmailJS</span><span
+                class="portfolio-tag-v4">jsPDF</span><span class="portfolio-tag-v4">SheetJS</span>
+            </div>
+            <div class="portfolio-links-v4">
+              <a href="https://hotelseguro.netlify.app/" target="_blank" class="portfolio-link-v4">
+                Visiter le site <span>↗</span>
+              </a>
+              <a href="https://drive.google.com/file/d/1J1xnIX_s6YmlrQm0tPGrOjXF5-FN6LpL/preview"
+                class="portfolio-link-v4" style="color: var(--muted);">Voir la démo 🎥</a>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- PROJET 2 : ORBIT PRO -->
+        <div class="portfolio-card-v4">
+          <div class="portfolio-img-box">
+            <img src="orbit-fr.webp" alt="Orbit PRO">
+          </div>
+          <div class="portfolio-body-v4">
+            <div class="portfolio-type-v4">Web Application</div>
+            <h3 class="portfolio-title-v4">ORBIT PRO | Moteur de Pilotage de Projet Assisté par l'IA</h3>
+            <p class="portfolio-desc-v4">Solution analytique SaaS de nouvelle génération conçue pour le pilotage
+              stratégique de projets. Orbit PRO fusionne la méthode EVM avec l'IA pour offrir une visibilité 360° sur la
+              corrélation Temps/Budget/Avancement. <br> <br>
+              <strong>Projet Open Source :</strong> Disponible pour test et contribution
+            </p>
+            <div class="portfolio-tags-v4">
+              <span class="portfolio-tag-v4">JavaScript</span><span class="portfolio-tag-v4">Google Gemini
+                API</span><span class="portfolio-tag-v4">ApexCharts</span><span
+                class="portfolio-tag-v4">Bootstrap</span><span class="portfolio-tag-v4">LocalStorage</span><span
+                class="portfolio-tag-v4">HTML2PDF.JS</span><span class="portfolio-tag-v4">Lucide Icons</span><span
+                class="portfolio-tag-v4">SheetJS</span>
+            </div>
+            <div class="portfolio-links-v4">
+              <a href="https://orbit-pro-five.vercel.app" target="_blank" class="portfolio-link-v4">
+                Visiter le site <span>↗</span>
+              </a>
+              <a href="https://github.com/Joslin-Hounkpatin/ORBIT-PRO" target="_blank" class="portfolio-link-v4">
+                <i class="ri-github-fill"></i> Voir le code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJET 3 : WORDPRESS -->
+        <div class="portfolio-card-v4">
+          <div class="portfolio-img-box">
+            <img src="Site WordPress.webp" alt="Complexe Hôtelier">
+          </div>
+          <div class="portfolio-body-v4">
+            <div class="portfolio-type-v4">CMS Development</div>
+            <h3 class="portfolio-title-v4">Complexe Hôtelier | Vitrine Digitale de Prestige</h3>
+            <p class="portfolio-desc-v4">Conception d'une plateforme vitrine sous WordPress avec une architecture
+              d'information optimisée pour l'UX/UI. L'accent a été mis sur une architecture d'information claire et un
+              design émotionnel pour maximiser les réservations directes.</p>
+            <div class="portfolio-tags-v4">
+              <span class="portfolio-tag-v4">WordPress</span><span class="portfolio-tag-v4">Astra Pro</span><span
+                class="portfolio-tag-v4">SEO</span><span class="portfolio-tag-v4">Custom CSS</span><span
+                class="portfolio-tag-v4">Spectra</span><span class="portfolio-tag-v4">Responsive Design</span>
+            </div>
+            <div class="portfolio-links-v4">
+              <a href="https://js.logtech.tech" target="_blank" class="portfolio-link-v4">
+                Visiter le site <span>↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div>
+        <div class="section-label">Contact</div>
+        <h2 class="contact-headline">TRAVAILLONS<br><em>ENSEMBLE</em></h2>
+        <p class="contact-sub">Je suis à la recherche d'expériences challengeantes en gestion de projet digital et
+          produit.<br>N'hésitez pas à me contacter pour échanger.</p>
+      </div>
+      <div class="contact-links">
+        <a href="https://wa.me/22961571207" class="contact-link" target="_blank">
+          <div>
+            <div class="contact-link-label">WhatsApp</div>
+            <div class="contact-link-value">+229 01 61 57 12 07</div>
+          </div>
+          <div class="contact-link-arrow">→</div>
+        </a>
+        <a href="mailto:joslinhounkpatin@gmail.com" class="contact-link">
+          <div>
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-value">joslinhounkpatin@gmail.com</div>
+          </div>
+          <div class="contact-link-arrow">→</div>
+        </a>
+        <a href="https://www.linkedin.com/in/joslin-hounkpatin-3b406b322" class="contact-link" target="_blank">
+          <div>
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-value">Joslin Hounkpatin</div>
+          </div>
+          <div class="contact-link-arrow">→</div>
+        </a>
+        <a href="https://github.com/Joslin-Hounkpatin" class="contact-link" target="_blank">
+          <div>
+            <div class="contact-link-label">GitHub</div>
+            <div class="contact-link-value">Joslin-Hounkpatin</div>
+          </div>
+          <div class="contact-link-arrow">→</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <span class="footer-copy">© 2026 Joslin Hounkpatin. Tous droits réservés.</span>
+      <div class="footer-socials">
+        <a href="https://github.com/Joslin-Hounkpatin" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/joslin-hounkpatin-3b406b322" target="_blank">LinkedIn</a>
+        <a href="https://wa.me/22961571207" target="_blank">WhatsApp</a>
+        <a href="https://www.facebook.com/share/1DrFRYJVXC/?mibextid=wwXIfr" target="_blank">Facebook</a>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const btn = document.getElementById('hamburger');
+        menu.classList.toggle('open');
+        btn.classList.toggle('open');
+        document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+      }
+      function closeMenu() {
+        document.getElementById('mobileMenu').classList.remove('open');
+        document.getElementById('hamburger').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    </script>
 </body>
+
 </html>
