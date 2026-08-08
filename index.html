@@ -1300,6 +1300,58 @@
       font-weight: 500;
     }
 
+    /* Case-study : contexte du projet */
+    .db-context {
+      font-size: 13.5px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 26px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .db-context strong {
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    /* Case-study : résultat mis en avant */
+    .db-result {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 30px;
+      padding-top: 26px;
+      border-top: 1px solid var(--border);
+    }
+
+    .db-result-num {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .db-result-text {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .db-result-label {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(201, 169, 110, .7);
+      margin-bottom: 4px;
+    }
+
     /* Responsive Mobile */
 
 
@@ -1882,8 +1934,8 @@
     /* Conteneur de la Frise */
     .timeline-wrapper {
       position: relative;
-      max-width: 1100px;
-      margin: 50px 0 50px 30px;
+      max-width: 1150px;
+      margin: 50px 0 50px 60px;
       padding-left: 40px;
       /* Espace pour la ligne */
     }
@@ -2357,6 +2409,12 @@
 
       .db-title {
         font-size: 24px;
+      }
+
+      .db-result {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
       }
 
       .projects-list-grid {
@@ -3179,6 +3237,14 @@
           <h3 class="db-title">ORBIT PRO</h3>
           <p class="db-subtitle">Application SaaS de Pilotage de Projet | Dashboard Analytics + Kanban Interactif + IA
           </p>
+
+          <p class="db-context">
+            <strong>Le constat :</strong> les outils de gestion de projet grand public (Trello, Jira…) restent
+            complexes à prendre en main, aussi bien pour des professionnels que pour des non-experts. ORBIT PRO
+            répond à ce problème avec un dashboard volontairement plus simple et intuitif, qui réunit temps, budget
+            et avancement en un seul écran et une IA qui aide à la décision plutôt que d'ajouter de la complexité.
+          </p>
+
           <ul class="db-list">
             <li>
               <strong>Conception Produit & IA :</strong> Conception et développement d'une application SaaS de gestion
@@ -3190,15 +3256,24 @@
               Vanilla JavaScript et Bootstrap.</li>
             <li><strong>Analyse & Décision :</strong> Évaluation de la corrélation Budget/Délais/Avancement pour
               faciliter le pilotage.</li>
-            <li><strong>Gestion de Projet Kanban :</strong> Conception d'un tableau Kanban interactif
-              (drag & drop natif, synchronisation temps réel Dashboard ↔ Kanban,
-              détection automatique des retards) en Vanilla JavaScript pur.</li>
+            <li><strong>Gestion de Projet Kanban :</strong> Conception d'une page Kanban dédiée, reliée en temps réel
+              aux projets renseignés dans le Dashboard (drag & drop natif, synchronisation bidirectionnelle Dashboard
+              ↔ Kanban, détection automatique des retards) en Vanilla JavaScript pur.</li>
             <li><strong>Visualisation de Données :</strong> Tableaux de bord temps réel avec 4 KPIs
               financiers et 2 graphiques de performance (ApexCharts).</li>
             <li><strong>Reporting & Export :</strong> Fonctionnalités d'exportation PDF (jsPDF) et Excel (SheetJS) pour
               les parties prenantes.</li>
             <li><strong>Open Source :</strong> Publication sur GitHub avec README technique complet.</li>
           </ul>
+
+          <div class="db-result">
+            <div class="db-result-num">3-en-1</div>
+            <div class="db-result-text">
+              <span class="db-result-label">Résultat</span>
+              Temps, budget et avancement réunis dans un seul dashboard, relié à un tableau Kanban intéractif, avec assistance IA à la décision. Publié en
+              open source sur GitHub.
+            </div>
+          </div>
         </div>
 
 
@@ -3210,6 +3285,13 @@
           </div>
           <h3 class="db-title">Hôtel Seguro</h3>
           <p class="db-subtitle">Booking Platform</p>
+
+          <p class="db-context">
+            <strong>Le contexte :</strong> projet développé lors d'un hackathon, pour un hôtel réel, avec une
+            contrainte de délai forte. L'objectif : livrer un MVP fonctionnel et présentable, cahier des charges
+            compris en seulement 12 jours.
+          </p>
+
           <ul class="db-list">
             <li><strong>Cadrage & Planification :</strong> Rédaction complète du cahier des charges fonctionnel et
               technique puis élaboration du planning opérationnel pour garantir la livraison du MVP dans un délai record
@@ -3222,6 +3304,15 @@
             <li><strong>Interconnexion & APIs :</strong> Automatisation des flux de notifications (confirmations
               instantanées pour les clients et l'hôtel) grâce à l'intégration des services EmailJS et Formspree.</li>
           </ul>
+
+          <div class="db-result">
+            <div class="db-result-num">12j</div>
+            <div class="db-result-text">
+              <span class="db-result-label">Résultat</span>
+              MVP livré dans les délais, démo validée et saluée par le client hôtelier. La mise en production reste
+              en attente de sa disponibilité côté hôtel.
+            </div>
+          </div>
         </div>
 
         <!-- PROJET 1 : KLIRÔ -->
@@ -3232,6 +3323,13 @@
           </div>
           <h3 class="db-title">Projet "Klirô"</h3>
           <p class="db-subtitle">Lavage auto avec technologie Waterless | Hackathon EIG</p>
+
+          <p class="db-context">
+            <strong>Le contexte :</strong> lors du Hackathon EIG, l'enjeu était de positionner en temps limité un
+            service de lavage auto écologique (technologie Waterless) comme une offre premium et rentable tout en
+            fédérant une équipe pluridisciplinaire de 15+ designers autour d'une vision produit commune.
+          </p>
+
           <ul class="db-list">
             <li><strong>Vision Produit :</strong> Définition du positionnement "Premium Tech" et de la stratégie de
               monétisation (abonnements et paiements mobiles avec incentives).</li>
@@ -3242,6 +3340,15 @@
             <li><strong>Livrable :</strong> Design System complet de 30 pages et prototype haute-fidélité validé par un
               jury d'experts.</li>
           </ul>
+
+          <div class="db-result">
+            <div class="db-result-num">&lt;2min</div>
+            <div class="db-result-text">
+              <span class="db-result-label">Résultat</span>
+              Parcours de réservation optimisé à moins de 2 minutes, design system de 30 pages livré et prototype
+              validé par un jury d'experts.
+            </div>
+          </div>
         </div>
 
         <div class="project-card-db">
@@ -3252,10 +3359,11 @@
           <h3 class="db-title">AGENT IA </h3>
           <p class="db-subtitle">Automatisation de facturation bout-en-bout via Claude MCP</p>
 
-          <p class="portfolio-desc-v4">Conception et déploiement d'un agent IA de facturation bout-en-bout, connecté à
-            Claude via le Model Context Protocol (MCP). L'agent orchestre 3 outils enchaînés : lecture dynamique d'une
-            grille tarifaire JSON, génération de factures PDF au design professionnel, et envoi automatisé par email via
-            SMTP Brevo sans intervention manuelle.</p>
+          <p class="db-context">
+            <strong>Le contexte :</strong> projet personnel réalisé pour mettre en pratique le Model Context Protocol
+            (MCP) après ma certification Claude/Anthropic. Un exercice volontairement concret plutôt que théorique,
+            pour connecter un agent IA à de véritables outils métier.
+          </p>
 
           <ul class="db-list">
 
@@ -3273,6 +3381,15 @@
               Envoi automatique de la facture PDF via Brevo,
               avec objet et corps personnalisables.</li>
           </ul>
+
+          <div class="db-result">
+            <div class="db-result-num">3 outils</div>
+            <div class="db-result-text">
+              <span class="db-result-label">Résultat</span>
+              Agent MCP opérationnel orchestrant 3 outils enchaînés (tarifs → facture PDF → email), sans intervention
+              manuelle une fois lancé, prouvant ainsi ma capacité à automatiser des process métiers beaucoup plus complets.
+            </div>
+          </div>
 
           <div class="portfolio-links-v4">
 

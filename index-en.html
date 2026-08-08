@@ -1300,6 +1300,58 @@
       font-weight: 500;
     }
 
+    /* Case study: project context */
+    .db-context {
+      font-size: 13.5px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 26px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .db-context strong {
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    /* Case study: highlighted result */
+    .db-result {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 30px;
+      padding-top: 26px;
+      border-top: 1px solid var(--border);
+    }
+
+    .db-result-num {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .db-result-text {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .db-result-label {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(201, 169, 110, .7);
+      margin-bottom: 4px;
+    }
+
     /* Responsive Mobile */
 
 
@@ -1882,8 +1934,8 @@
     /* Conteneur de la Frise */
     .timeline-wrapper {
       position: relative;
-      max-width: 1100px;
-      margin: 50px 0 50px 30px;
+      max-width: 1150px;
+      margin: 50px 0 50px 60px;
       padding-left: 40px;
       /* Espace pour la ligne */
     }
@@ -2357,6 +2409,12 @@
 
       .db-title {
         font-size: 24px;
+      }
+
+      .db-result {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
       }
 
       .projects-list-grid {
@@ -3173,8 +3231,16 @@
           </div>
           <h3 class="db-title">ORBIT PRO</h3>
           <p class="db-subtitle">SaaS Project Management App | Analytics Dashboard + Interactive Kanban + AI</p>
+
+          <p class="db-context">
+            <strong>The insight:</strong> mainstream project management tools (Trello, Jira…) remain hard to pick
+            up, for professionals and non-experts alike. ORBIT PRO addresses this with a deliberately simpler, more
+            intuitive dashboard that brings time, budget and progress together on one screen, with AI assisting
+            decisions instead of adding complexity.
+          </p>
+
           <ul class="db-list">
-            <li><strong>Product & AI Design:</strong>  Designing and developing a SaaS project management app that integrates the
+            <li><strong>Product & AI Design :</strong> Designing and developing a SaaS project management app that integrates the
                 Gemini API to provide AI-assisted insights for strategic project management.</li>
             <li><strong>Front-End Architecture :</strong> Development of interactive and fully responsive interfaces
               using Vanilla JavaScript and Bootstrap.</li>
@@ -3188,6 +3254,14 @@
             </li>
             <li><strong>Open Source :</strong> Released on GitHub with a complete technical README.</li>
           </ul>
+
+          <div class="db-result">
+            <div class="db-result-num">3-in-1</div>
+            <div class="db-result-text">
+              <span class="db-result-label">Result</span>
+            Time, budget, and progress all brought together in a single dashboard, linked to an interactive Kanban board, with AI decision support. Released as open source on GitHub.
+            </div>
+          </div>
         </div>
 
 
@@ -3199,6 +3273,13 @@
           </div>
           <h3 class="db-title">Hôtel Seguro</h3>
           <p class="db-subtitle">Booking Platform</p>
+
+          <p class="db-context">
+            <strong>The context:</strong> project built during a hackathon, for a real hotel client, under a tight
+            deadline. The goal: deliver a functional, presentable MVP, full specifications included in just 12
+            days.
+          </p>
+
           <ul class="db-list">
             <li><strong>Scoping & Planning :</strong> Complete drafting of functional and technical specifications and
               development of the operational schedule to guarantee the delivery of the MVP within a record timeframe of
@@ -3211,9 +3292,18 @@
             <li><strong>Interconnexion & APIs :</strong> Automation of notification flows (instant confirmations for
               both clients and the hotel) through the integration of EmailJS and Formspree services.</li>
           </ul>
+
+          <div class="db-result">
+            <div class="db-result-num">12d</div>
+            <div class="db-result-text">
+              <span class="db-result-label">Result</span>
+              MVP delivered on time, demo validated and praised by the hotel client. Production rollout is currently
+              on hold pending the client's availability.
+            </div>
+          </div>
         </div>
 
-        <!-- PROJET 1 : KLIRÔ -->
+         <!-- PROJET 1 : KLIRÔ -->
         <div class="project-card-db">
           <div class="db-header">
             <span class="db-badge">Product Owner</span>
@@ -3221,6 +3311,12 @@
           </div>
           <h3 class="db-title">Project "Klirô"</h3>
           <p class="db-subtitle">Car wash with Waterless technology | EIG Hackathon</p>
+
+
+          <p class="db-context">
+            <strong>The context :</strong> During the EIG Hackathon, the challenge was to position an eco-friendly car wash service (Waterless technology) as a premium and profitable offering within a limited time, while bringing together a multidisciplinary team of 15+ designers around a shared product vision.
+          </p>
+
           <ul class="db-list">
             <li><strong>Product Vision :</strong> Defining the 'Premium Tech' positioning and monetization strategy
               (subscriptions and mobile payments with incentives).</li>
@@ -3231,24 +3327,35 @@
             <li><strong>Deliverable :</strong> Complete 30-page Design System and high-fidelity prototype approved by a
               panel of experts.</li>
           </ul>
+
+
+          <div class="db-result">
+            <div class="db-result-num">&lt;2min</div>
+            <div class="db-result-text">
+              <span class="db-result-label">Result</span>
+           Optimized booking flow in under 2 minutes, 30-page design system delivered, and prototype approved by a panel of experts.
+            </div>
+          </div>
         </div>
 
         <div class="project-card-db">
           <div class="db-header">
             <span class="db-badge">AI Architect & MCP Developer</span>
 
+
           </div>
           <h3 class="db-title">AI AGENT</h3>
           <p class="db-subtitle">End-to-end billing Automation via Claude MCP</p>
 
-          <p class="portfolio-desc-v4">Design and deployment of an end-to-end AI billing agent, connected to Claude via
-            the Model Context Protocol (MCP). The agent orchestrates 3 chained tools: dynamic reading of a JSON price
-            grid, generation of professional-looking PDF invoices, and automated sending via email through Brevo SMTP
-            without manual intervention.</p>
+
+
+          <p class="db-context">
+            <strong>The context :</strong>The context: a personal project carried out to put the Model Context Protocol (MCP) into practice after my Claude/Anthropic certification. A deliberately hands-on exercise rather than a theoretical one, to connect an AI agent to real business tools.
+          </p>
 
           <ul class="db-list">
 
-            <li><strong>MCP Architecture :</strong>
+           <li><strong>MCP Architecture :</strong>
               Design of 3 native tools (read_prices, create_pdf_invoice, send_invoice_email) exposed and controlled by
               Claude.</li>
             <li><strong>End-to-end Automation :</strong>
@@ -3259,6 +3366,16 @@
               Automatic sending of the PDF invoice via Brevo, with customizable subject and body.</li>
           </ul>
 
+
+
+          <div class="db-result">
+            <div class="db-result-num">3 tools</div>
+            <div class="db-result-text">
+              <span class="db-result-label">Result</span>
+              MCP agent up and running, chaining together 3 tools (pricing → PDF invoice → email) without any manual intervention once launched, thus proving my ability to automate much more complex business processes.
+            </div>
+          </div>
+
           <div class="portfolio-links-v4">
 
             <a href="https://drive.google.com/file/d/1ovN2_D1fGkcvAQRXZpUTdNb9XFQMPv-N/preview"
@@ -3266,7 +3383,6 @@
           </div>
 
         </div>
-
 
 
       </div>
