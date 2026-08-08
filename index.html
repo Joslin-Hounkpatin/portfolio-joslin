@@ -5,6 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joslin Hounkpatin | Chef de Projet Digital</title>
+  <meta name="description"
+    content="Joslin Hounkpatin, Chef de Projet Digital certifié PMI Project Management Ready®, spécialisé en IA générative, Product Ownership et développement web. Découvrez mes projets, compétences et certifications.">
+  <meta name="author" content="Joslin Hounkpatin">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://joslin-hounkpatin.github.io/portfolio-joslin/">
+
+  <!-- Open Graph / Réseaux sociaux -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:url" content="https://joslin-hounkpatin.github.io/portfolio-joslin/">
+  <meta property="og:title" content="Joslin Hounkpatin | Chef de Projet Digital">
+  <meta property="og:description"
+    content="Chef de Projet Digital certifié PMI, spécialisé en IA générative, Product Ownership et développement web. Le pont entre vision métier et réalité technique.">
+  <meta property="og:image" content="https://joslin-hounkpatin.github.io/portfolio-joslin/Photo%20Portfolio.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Joslin Hounkpatin | Chef de Projet Digital">
+  <meta name="twitter:description"
+    content="Chef de Projet Digital certifié PMI, spécialisé en IA générative, Product Ownership et développement web.">
+  <meta name="twitter:image" content="https://joslin-hounkpatin.github.io/portfolio-joslin/Photo%20Portfolio.webp">
+
+  <link rel="alternate" hreflang="fr" href="https://joslin-hounkpatin.github.io/portfolio-joslin/">
+  <link rel="alternate" hreflang="en" href="https://joslin-hounkpatin.github.io/portfolio-joslin/index-en.html">
+
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap"
     rel="stylesheet">
@@ -44,6 +67,33 @@
       font-family: var(--font-body);
       font-weight: 300;
       overflow-x: hidden
+    }
+
+    /* Accessibilité clavier : contour visible sur tous les éléments interactifs */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    /* Lien d'évitement : caché visuellement, révélé au focus clavier */
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 12px;
+      z-index: 999;
+      background: var(--gold);
+      color: var(--black);
+      padding: 10px 18px;
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: top .25s;
+    }
+
+    .skip-link:focus {
+      top: 12px;
     }
 
     /* NAV */
@@ -1832,8 +1882,8 @@
     /* Conteneur de la Frise */
     .timeline-wrapper {
       position: relative;
-      max-width: 1000px;
-      margin: 50px 0;
+      max-width: 1100px;
+      margin: 50px 0 50px 30px;
       padding-left: 40px;
       /* Espace pour la ligne */
     }
@@ -2258,6 +2308,8 @@
       .timeline-wrapper {
         padding-left: 28px;
         margin-top: 36px;
+        margin-left: 0;
+        max-width: 100%;
       }
 
       .timeline-wrapper::before {
@@ -2484,7 +2536,139 @@
         gap: 10px;
       }
     }
+    /* ═══════════════════════════════════════════
+       TABLETTE PAYSAGE / PETITS LAPTOPS (901px–1240px)
+       Empêche la photo du hero d'empiéter sur le texte :
+       entre 900px et ~1200px, photo et titre se chevauchaient.
+       ═══════════════════════════════════════════ */
+    @media (min-width: 901px) and (max-width: 1240px) {
+      .hero-content {
+        max-width: 44%;
+        padding-left: 36px;
+      }
+
+      .hero-title {
+        font-size: clamp(46px, 6.4vw, 78px);
+      }
+
+      .hero-photo-wrap {
+        width: 300px;
+        height: 380px;
+        right: 2%;
+      }
+
+      .hero-stats {
+        left: 36px;
+        gap: 26px;
+        flex-wrap: wrap;
+      }
+
+      nav {
+        padding: 20px 32px;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+    }
+
+    /* ═══════════════════════════════════════════
+       TABLETTE (641px–1024px)
+       Grilles en 2 colonnes au lieu d'empilées ou compressées à 3
+       ═══════════════════════════════════════════ */
+    @media (min-width: 641px) and (max-width: 1024px) {
+
+      #hero,
+      #services,
+      #projets,
+      #certifications,
+      #portfolio,
+      #parcours,
+      .section-skills {
+        padding-left: 36px;
+        padding-right: 36px;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .services-dashboard,
+      .skills-dashboard,
+      .certs-container,
+      .portfolio-dashboard-grid,
+      .project-dashboard,
+      .projects-list-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .project-card-db.wide {
+        grid-column: span 2;
+      }
+
+      .portfolio-img-box {
+        height: 200px;
+      }
+
+      .exp-item {
+        grid-template-columns: 120px 1fr;
+        padding: 36px 32px;
+      }
+
+      .timeline-wrapper {
+        padding-left: 34px;
+        margin-left: 24px;
+        max-width: calc(100% - 24px);
+      }
+    }
+
+    /* Respecte la préférence système "réduire les animations" */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      html {
+        scroll-behavior: auto
+      }
+    }
+
+    /* Neutralise les effets de survol sur écrans tactiles (mobile/tablette)
+       pour qu'une carte ne reste jamais visuellement "figée" après un tap */
+    @media (hover: none) and (pointer: coarse) {
+
+      .service-card:hover,
+      .about-stat:hover,
+      .exp-item:hover,
+      .project-row:hover,
+      .cert-card-v2:hover,
+      .skill-card-v2:hover,
+      .service-card-v3:hover,
+      .timeline-card:hover,
+      .portfolio-card-v4:hover,
+      .project-card-db:hover,
+      .project-card-new:hover,
+      .tool-badge-premium:hover,
+      .contact-link:hover {
+        transform: none;
+      }
+
+      .portfolio-card-v4:hover .portfolio-img-box img,
+      .portfolio-card:hover .portfolio-card-img img {
+        transform: none;
+      }
+    }
   </style>
+
 </head>
 
 <body>
@@ -2504,8 +2688,10 @@
     </div>
   </div>
 
+  <a href="#main" class="skip-link">Aller au contenu</a>
+
   <!-- NAV -->
-  <nav>
+  <nav aria-label="Navigation principale">
     <a href="#" class="nav-logo">J·H</a>
     <ul class="nav-links">
       <li><a href="#about">À Propos</a></li>
@@ -2519,19 +2705,21 @@
     <div class="nav-right">
       <a href="index-en.html" class="nav-lang">EN</a>
       <a href="CV Joslin Hounkpatin_Chef de Projet Digital.pdf" class="nav-lang nav-cv" target="_blank">CV ↗</a>
-      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section id="hero">
+  <main id="main">
+
+    <!-- HERO -->
+    <section id="hero">
     <div class="hero-bg"></div>
 
 
     <div class="hero-photo-wrap">
-      <img src="Photo Portfolio.webp" alt="Joslin Hounkpatin">
+      <img src="Photo Portfolio.webp" alt="Joslin Hounkpatin" fetchpriority="high" decoding="async">
     </div>
 
 
@@ -2681,6 +2869,7 @@
 
     </div>
 
+    </section>
 
     <!-- SERVICES -->
     <section id="services">
@@ -3107,7 +3296,7 @@
         <!-- PROJET 1 : HÔTEL SEGURO -->
         <div class="portfolio-card-v4">
           <div class="portfolio-img-box">
-            <img src="hotel seguro.webp" alt="Hôtel Seguro">
+            <img src="hotel seguro.webp" alt="Hôtel Seguro" loading="lazy" decoding="async">
           </div>
           <div class="portfolio-body-v4">
             <div class="portfolio-type-v4">Web Application</div>
@@ -3135,7 +3324,7 @@
         <!-- PROJET 2 : ORBIT PRO -->
         <div class="portfolio-card-v4">
           <div class="portfolio-img-box">
-            <img src="orbit-fr.webp" alt="Orbit PRO">
+            <img src="orbit-fr.webp" alt="Orbit PRO" loading="lazy" decoding="async">
           </div>
           <div class="portfolio-body-v4">
             <div class="portfolio-type-v4">Web Application</div>
@@ -3196,6 +3385,7 @@
           </div>
         </div>
 
+      </div>
     </section>
 
 
@@ -3239,6 +3429,8 @@
       </div>
     </section>
 
+    </main>
+
     <!-- FOOTER -->
     <footer>
       <span class="footer-copy">© 2026 Joslin Hounkpatin. Tous droits réservés.</span>
@@ -3254,15 +3446,21 @@
       function toggleMenu() {
         const menu = document.getElementById('mobileMenu');
         const btn = document.getElementById('hamburger');
-        menu.classList.toggle('open');
+        const isOpen = menu.classList.toggle('open');
         btn.classList.toggle('open');
-        document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+        btn.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
       }
       function closeMenu() {
         document.getElementById('mobileMenu').classList.remove('open');
         document.getElementById('hamburger').classList.remove('open');
+        document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       }
+      // Ferme le menu mobile si la fenêtre est agrandie au-delà du seuil tablette/mobile
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 900) closeMenu();
+      });
     </script>
 </body>
 
