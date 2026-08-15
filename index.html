@@ -3399,6 +3399,56 @@
 
         </div>
 
+<!-- PROJET 5 : SCHOOLPAY (carte pleine largeur) -->
+        <div class="project-card-db wide">
+          <div class="db-header">
+            <span class="db-badge">Product Manager & Lead Developer</span>
+          </div>
+          <h3 class="db-title">SCHOOLPAY</h3>
+          <p class="db-subtitle">Plateforme Web de Digitalisation des Inscriptions & Paiements Scolaires</p>
+
+          <p class="db-context">
+            <strong>Le constat :</strong> à EIG Bénin, le processus d'inscription et de paiement des frais de
+            scolarité reposait sur des échanges papier et WhatsApp avec preuves de paiement envoyées manuellement, reçus
+            papier, suivi administratif chronophage et sujet aux erreurs. SchoolPay répond à ce problème avec une
+            plateforme centralisée qui digitalise l'intégralité du parcours étudiant, de l'inscription académique
+            jusqu'au paiement des tranches via MTN Mobile Money, sans complexifier l'expérience pour des utilisateurs
+            peu familiers du numérique.
+          </p>
+
+          <ul class="db-list">
+            <li><strong>Conception Produit & Pilotage :</strong> Conception, spécifications fonctionnelles et cahier
+              des charges d'une plateforme SaaS de gestion scolaire, menée en autonomie en tant que product manager et
+              lead developer, avec un MVP livré en 2 semaines.</li>
+            <li><strong>Architecture Full-Stack :</strong> Développement d'une API REST en PHP connectée à une base
+              de données MySQL relationnelle, consommée par un frontend React (Vite) + Tailwind CSS, avec gestion
+              d'état via Axios et validation de formulaires via React Hook Form.</li>
+            <li><strong>Paiement Mobile Money :</strong> Intégration d'un parcours de paiement par QR Code et USSD
+              MTN MoMo, avec déclaration de transaction, allocation automatique des tranches et validation manuelle
+              par l'administration.</li>
+            <li><strong>Sécurité & Authentification :</strong> Authentification étudiant/admin avec hachage bcrypt,
+              gestion de sessions, protection contre le brute-force et suppression logique (soft-delete) des comptes
+              pour préserver l'intégrité des données financières.</li>
+            <li><strong>Gestion Administrative :</strong> Tableau de bord admin avec statistiques en temps réel,
+              gestion des filières, années académiques, frais et tranches, attribution automatique des matricules et
+              validation des inscriptions.</li>
+            <li><strong>Reporting & Documents :</strong> Génération de reçus PDF (FPDF), exports Excel/CSV/PDF des
+              données administratives, et notifications automatiques par e-mail (PHPMailer).</li>
+            <li><strong>Design & Responsive :</strong> Interface aux couleurs et à l'identité visuelle d'EIG Bénin,
+              entièrement responsive (mobile, tablette), pensée pour une double présentation : soutenance académique
+              et pitch d'adoption auprès de l'administration.</li>
+          </ul>
+
+          <div class="db-result">
+            <div class="db-result-num">100%</div>
+            <div class="db-result-text">
+              <span class="db-result-label">Résultat</span>
+              Un parcours d'inscription et de paiement scolaire entièrement dématérialisé, du formulaire académique
+              au reçu PDF, déployé en production et prêt pour une adoption réelle par l'établissement.
+            </div>
+          </div>
+        </div>
+
 
       </div>
     </section>
@@ -3470,34 +3520,27 @@
           </div>
         </div>
 
-        <!-- PROJET 3 : EN COURS -->
+        <!-- PROJET 3 : SCHOOLPAY -->
         <div class="portfolio-card-v4">
-          <div class="portfolio-img-box"
-            style="display: flex; align-items: center; justify-content: center; background: #1a1a1a;">
-            <!-- Utilisation de l'icône de cadenas (Remix Icon comme dans votre exemple) -->
-            <i class="ri-lock-password-line" style="font-size: 5rem; color: #444;"></i>
+          <div class="portfolio-img-box">
+            <img src="schoolpay.jpeg" alt="Hôtel Seguro" loading="lazy" decoding="async">
           </div>
           <div class="portfolio-body-v4">
             <div class="portfolio-type-v4">Web Application</div>
-            <h3 class="portfolio-title-v4">PROJET EN COURS | Solution Innovante</h3>
-            <p class="portfolio-desc-v4">Ce projet est actuellement en phase de conception et de développement intensif.
-              Il s'agit d'une plateforme web qui digitalise l'inscription académique et le paiement des frais de
-              scolarité.<br> <br>
-              <strong>Statut :</strong> Développement en cours - Accès restreint
+            <h3 class="portfolio-title-v4">SCHOOLPAY | Plateforme de Digitalisation des Inscriptions & Paiements Scolaires</h3>
+            <p class="portfolio-desc-v4">Solution web conçue pour EIG Bénin afin de remplacer le processus manuel d'inscription et de paiement des frais de scolarité. SchoolPay centralise l'inscription académique, le paiement par QR Code MTN Mobile Money et le suivi administratif sur une seule plateforme sécurisée.
             </p>
             <div class="portfolio-tags-v4">
-              <span class="portfolio-tag-v4">React</span><span class="portfolio-tag-v4">Node.js</span><span
-                class="portfolio-tag-v4">PostgreSQL</span><span class="portfolio-tag-v4">Tailwind CSS</span><span
-                class="portfolio-tag-v4">Docker</span>
+              <span class="portfolio-tag-v4">React (Vite)</span><span class="portfolio-tag-v4">Axios</span><span
+                class="portfolio-tag-v4">Tailwind CSS</span><span class="portfolio-tag-v4">PHP (API REST)</span><span
+                class="portfolio-tag-v4">React Hook Form</span><span class="portfolio-tag-v4">FPDF</span><span
+                class="portfolio-tag-v4">MySQL</span><span class="portfolio-tag-v4">PHPMailer</span>
             </div>
             <div class="portfolio-links-v4">
-              <a href="#" class="portfolio-link-v4" style="opacity: 0.5; pointer-events: none;">
-                Bientôt disponible <span>🔒</span>
+              <a href="https://schoolpay.wuaze.com" target="_blank" class="portfolio-link-v4">
+                Visiter le site <span>↗</span>
               </a>
-              <a href="#" class="portfolio-link-v4" style="opacity: 0.5; pointer-events: none;">
-                <i class="ri-github-fill"></i> Code Privé
-              </a>
-
+             
             </div>
           </div>
         </div>
