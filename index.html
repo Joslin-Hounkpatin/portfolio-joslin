@@ -2737,7 +2737,7 @@
     <a href="#services" onclick="closeMenu()">Services</a>
     <a href="#parcours" onclick="closeMenu()">Parcours</a>
     <a href="#projets" onclick="closeMenu()">Projets</a>
-    <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+    <a href="#portfolio" onclick="closeMenu()">Hub</a>
     <a href="#certifications" onclick="closeMenu()">Certifications</a>
     <a href="#contact" onclick="closeMenu()">Contact</a>
     <div class="mobile-menu-lang">
@@ -2756,7 +2756,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#parcours">Parcours</a></li>
       <li><a href="#projets">Projets</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#portfolio">Hub</a></li>
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -3192,6 +3192,20 @@
               <a href="https://cursa.app/fr/mon-certificat/cert47b0d436c180d3367ec18e081c398d29" target="_blank"
                 class="cert-verify-link">Vérifier le certificat</a>
             </li>
+
+             <li class="cert-item-v2">
+              <div class="cert-name-v2">PMI KICKOFF Agile</div>
+              <a href="https://www.credly.com/badges/d7ac0699-3377-4f1f-8617-9bc944590979/public_url"
+                target="_blank" class="cert-verify-link">Vérifier le badge</a>
+            </li>
+
+<li class="cert-item-v2">
+              <div class="cert-name-v2">PMI KICKOFF Prédictive</div>
+              <a href="https://www.credly.com/badges/67c31a2c-7230-4360-8cdb-b171df2a9a31/public_url"
+                target="_blank" class="cert-verify-link">Vérifier le badge</a>
+            </li>
+
+
           </ul>
         </div>
 
@@ -3222,7 +3236,7 @@
     <!-- PROJETS TECH (liste) -->
     <section id="projets">
       <div class="section-label">Réalisations Phares</div>
-      <h2 class="section-title">PROJETS TECH</h2>
+      <h2 class="section-title">PROJETS</h2>
 
       <div class="project-dashboard">
 
@@ -3231,7 +3245,7 @@
         <!-- PROJET  : ORBIT PRO -->
         <div class="project-card-db">
           <div class="db-header">
-            <span class="db-badge">Lead Developer & Product Owner</span>
+            <span class="db-badge">Lead Développeur & Product Owner</span>
 
           </div>
           <h3 class="db-title">ORBIT PRO</h3>
@@ -3277,6 +3291,59 @@
         </div>
 
 
+        <!-- PROJET 2 : SCHOOLPAY -->
+        <div class="project-card-db">
+          <div class="db-header">
+            <span class="db-badge">Product Manager & Lead Développeur</span>
+
+          </div>
+          <h3 class="db-title">SCHOOLPAY</h3>
+          <p class="db-subtitle">Plateforme Web de Digitalisation des Inscriptions & Paiements Scolaires</p>
+
+          <p class="db-context">
+            <strong>Le constat :</strong> à EIG Bénin, le processus d'inscription et de paiement des frais de
+            scolarité reposait sur des échanges papier et WhatsApp avec preuves de paiement envoyées manuellement, reçus
+            papier, suivi administratif chronophage et sujet aux erreurs. SchoolPay répond à ce problème avec une
+            plateforme centralisée qui digitalise l'intégralité du parcours étudiant, de l'inscription académique
+            jusqu'au paiement des tranches via MTN Mobile Money, sans complexifier l'expérience pour des utilisateurs
+            peu familiers du numérique.
+          </p>
+
+           <ul class="db-list">
+            <li><strong>Conception Produit & Pilotage :</strong> Conception, spécifications fonctionnelles et cahier
+              des charges d'une plateforme SaaS de gestion scolaire, menée en autonomie en tant que product manager et
+              lead developer, avec un MVP livré en 2 semaines.</li>
+            <li><strong>Architecture Full-Stack :</strong> Développement d'une API REST en PHP connectée à une base
+              de données MySQL relationnelle, consommée par un frontend React (Vite) + Tailwind CSS, avec gestion
+              d'état via Axios et validation de formulaires via React Hook Form.</li>
+            <li><strong>Paiement Mobile Money :</strong> Intégration d'un parcours de paiement par QR Code et USSD
+              MTN MoMo, avec déclaration de transaction, allocation automatique des tranches et validation manuelle
+              par l'administration.</li>
+            <li><strong>Sécurité & Authentification :</strong> Authentification étudiant/admin avec hachage bcrypt,
+              gestion de sessions, protection contre le brute-force et suppression logique (soft-delete) des comptes
+              pour préserver l'intégrité des données financières.</li>
+            <li><strong>Gestion Administrative :</strong> Tableau de bord admin avec statistiques en temps réel,
+              gestion des filières, années académiques, frais et tranches, attribution automatique des matricules et
+              validation des inscriptions.</li>
+            <li><strong>Reporting & Documents :</strong> Génération de reçus PDF (FPDF), exports Excel/CSV/PDF des
+              données administratives, et notifications automatiques par e-mail (PHPMailer).</li>
+            <li><strong>Design & Responsive :</strong> Interface aux couleurs et à l'identité visuelle d'EIG Bénin,
+              entièrement responsive (mobile, tablette), pensée pour une double présentation : soutenance académique
+              et pitch d'adoption auprès de l'administration.</li>
+          </ul>
+
+          <div class="db-result">
+            <div class="db-result-num">100%</div>
+            <div class="db-result-text">
+              <span class="db-result-label">Résultat</span>
+              Un parcours d'inscription et de paiement scolaire entièrement dématérialisé, du formulaire académique
+              au reçu PDF, déployé en production et prêt pour une adoption réelle par l'établissement.
+            </div>
+          </div>
+        </div>
+
+
+
         <!-- PROJET 2 : HÔTEL SEGURO -->
         <div class="project-card-db">
           <div class="db-header">
@@ -3315,6 +3382,42 @@
           </div>
         </div>
 
+
+
+        
+
+        <!-- PROJET : ACE -->
+        <div class="project-card-db">
+          <div class="db-header">
+            <span class="db-badge">Chef de Projet</span>
+
+          </div>
+          <h3 class="db-title">Projet " Résilience Communautaire face aux Défis Climatiques et Océaniques au Bénin "</h3>
+          <p class="db-subtitle">Projet de sensibilisation environnementale | Appel à projets ACE Micro Grants – Pulitzer Center</p>
+
+          <p class="db-context">
+            <strong>Le contexte :</strong> dans le cadre de l’appel à projets Africa Climate & Environment Micro Grants 2025 du Pulitzer Center, l’objectif était de concevoir un projet de sensibilisation autour des enjeux climatiques et océaniques au Bénin, en s’appuyant sur les reportages soutenus par le Pulitzer Center. L’appel ciblait notamment les communautés impactées et les jeunes professionnels.
+          </p>
+
+          <ul class="db-list">
+            <li><strong>Conception de projet :</strong> Conception et rédaction de la proposition « Résilience Communautaire face aux Défis Climatiques et Océaniques au Bénin », de la problématique jusqu'au plan d'action. </li>
+            <li><strong>Ingénierie de projet :</strong> Définition des objectifs, activités, résultats attendus, indicateurs de performance, calendrier de mise en œuvre et budget prévisionnel.</li>
+            <li><strong>Montage financier :</strong> Élaboration du dossier technique et financier destiné à répondre aux critères de sélection du Pulitzer Center, avec une enveloppe de micro-subvention comprise entre 2 500 et 3 000 USD.</li>
+            <li><strong>Pilotage & suivi :</strong>Mise en place d'un cadre de suivi des indicateurs et d'une logique de reporting permettant de mesurer l'avancement et les résultats du projet.</li>
+              <li><strong>Alignement stratégique :</strong> Structuration du projet autour des enjeux de climat, de préservation des espaces aquatiques et de résilience des communautés, conformément aux priorités de l'appel.</li>
+          </ul>
+
+          <div class="db-result">
+            <div class="db-result-num">1er</div>
+            <div class="db-result-text">
+              <span class="db-result-label">Résultat</span>
+              proposition de projet sélectionnée par le Pulitzer Center dans le cadre de l’initiative Africa Climate & Environment Micro Grants 2025, permettant à l’organisation d’obtenir un financement pour sa mise en œuvre.
+            </div>
+          </div>
+        </div>
+
+
+
         <!-- PROJET 1 : KLIRÔ -->
         <div class="project-card-db">
           <div class="db-header">
@@ -3351,6 +3454,8 @@
           </div>
         </div>
 
+
+        <!--Projet AGENT IA-->
         <div class="project-card-db">
           <div class="db-header">
             <span class="db-badge">Architecte IA & Développeur MCP</span>
@@ -3399,55 +3504,6 @@
 
         </div>
 
-<!-- PROJET 5 : SCHOOLPAY (carte pleine largeur) -->
-        <div class="project-card-db wide">
-          <div class="db-header">
-            <span class="db-badge">Product Manager & Lead Developer</span>
-          </div>
-          <h3 class="db-title">SCHOOLPAY</h3>
-          <p class="db-subtitle">Plateforme Web de Digitalisation des Inscriptions & Paiements Scolaires</p>
-
-          <p class="db-context">
-            <strong>Le constat :</strong> à EIG Bénin, le processus d'inscription et de paiement des frais de
-            scolarité reposait sur des échanges papier et WhatsApp avec preuves de paiement envoyées manuellement, reçus
-            papier, suivi administratif chronophage et sujet aux erreurs. SchoolPay répond à ce problème avec une
-            plateforme centralisée qui digitalise l'intégralité du parcours étudiant, de l'inscription académique
-            jusqu'au paiement des tranches via MTN Mobile Money, sans complexifier l'expérience pour des utilisateurs
-            peu familiers du numérique.
-          </p>
-
-          <ul class="db-list">
-            <li><strong>Conception Produit & Pilotage :</strong> Conception, spécifications fonctionnelles et cahier
-              des charges d'une plateforme SaaS de gestion scolaire, menée en autonomie en tant que product manager et
-              lead developer, avec un MVP livré en 2 semaines.</li>
-            <li><strong>Architecture Full-Stack :</strong> Développement d'une API REST en PHP connectée à une base
-              de données MySQL relationnelle, consommée par un frontend React (Vite) + Tailwind CSS, avec gestion
-              d'état via Axios et validation de formulaires via React Hook Form.</li>
-            <li><strong>Paiement Mobile Money :</strong> Intégration d'un parcours de paiement par QR Code et USSD
-              MTN MoMo, avec déclaration de transaction, allocation automatique des tranches et validation manuelle
-              par l'administration.</li>
-            <li><strong>Sécurité & Authentification :</strong> Authentification étudiant/admin avec hachage bcrypt,
-              gestion de sessions, protection contre le brute-force et suppression logique (soft-delete) des comptes
-              pour préserver l'intégrité des données financières.</li>
-            <li><strong>Gestion Administrative :</strong> Tableau de bord admin avec statistiques en temps réel,
-              gestion des filières, années académiques, frais et tranches, attribution automatique des matricules et
-              validation des inscriptions.</li>
-            <li><strong>Reporting & Documents :</strong> Génération de reçus PDF (FPDF), exports Excel/CSV/PDF des
-              données administratives, et notifications automatiques par e-mail (PHPMailer).</li>
-            <li><strong>Design & Responsive :</strong> Interface aux couleurs et à l'identité visuelle d'EIG Bénin,
-              entièrement responsive (mobile, tablette), pensée pour une double présentation : soutenance académique
-              et pitch d'adoption auprès de l'administration.</li>
-          </ul>
-
-          <div class="db-result">
-            <div class="db-result-num">100%</div>
-            <div class="db-result-text">
-              <span class="db-result-label">Résultat</span>
-              Un parcours d'inscription et de paiement scolaire entièrement dématérialisé, du formulaire académique
-              au reçu PDF, déployé en production et prêt pour une adoption réelle par l'établissement.
-            </div>
-          </div>
-        </div>
 
 
       </div>
@@ -3456,7 +3512,7 @@
     <!-- PORTFOLIO CARDS -->
     <section id="portfolio">
       <div class="section-label">Travaux Récents</div>
-      <h2 class="section-title">PORTFOLIO DIGITAL</h2>
+      <h2 class="section-title"> SOLUTIONS DIGITALES</h2>
 
       <div class="portfolio-dashboard-grid">
 
@@ -3554,8 +3610,9 @@
       <div>
         <div class="section-label">Contact</div>
         <h2 class="contact-headline">TRAVAILLONS<br><em>ENSEMBLE</em></h2>
-        <p class="contact-sub">Je suis à la recherche d'expériences challengeantes en gestion de projet digital et
-          produit.<br>N'hésitez pas à me contacter pour échanger.</p>
+        <p class="contact-sub">Je suis ouvert aux opportunités professionnelles, collaborations et missions 
+           dans la gestion de projet digital, le Product Management et les environnements tech.
+          N'hésitez pas à me contacter pour échanger.</p>
       </div>
       <div class="contact-links">
         <a href="https://wa.me/22961571207" class="contact-link" target="_blank">
