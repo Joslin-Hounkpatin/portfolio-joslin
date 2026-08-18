@@ -33,7 +33,7 @@
     rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="icon" type="image/png" href="Favicon portfolio.png">
-  <style>
+   <style>
     *,
     *::before,
     *::after {
@@ -69,14 +69,14 @@
       overflow-x: hidden
     }
 
-    /* Keyboard accessibility: visible outline on interactive elements */
+    /* Accessibilité clavier : contour visible sur tous les éléments interactifs */
     a:focus-visible,
     button:focus-visible {
       outline: 2px solid var(--gold);
       outline-offset: 3px;
     }
 
-    /* Skip link: visually hidden, revealed on keyboard focus */
+    /* Lien d'évitement : caché visuellement, révélé au focus clavier */
     .skip-link {
       position: absolute;
       top: -60px;
@@ -1300,7 +1300,7 @@
       font-weight: 500;
     }
 
-    /* Case study: project context */
+    /* Case-study : contexte du projet */
     .db-context {
       font-size: 13.5px;
       line-height: 1.75;
@@ -1315,7 +1315,7 @@
       font-weight: 500;
     }
 
-    /* Case study: highlighted result */
+    /* Case-study : résultat mis en avant */
     .db-result {
       display: flex;
       align-items: center;
@@ -1369,6 +1369,10 @@
       margin-top: 50px;
     }
 
+.cert-card-v2:nth-child(4) {
+  grid-column: 2;
+}
+
     .cert-card-v2 {
       background: var(--card);
       border: 1px solid var(--border);
@@ -1376,8 +1380,6 @@
       padding: 32px;
       display: flex;
       flex-direction: column;
-
-      /* AJOUTE CETTE LIGNE pour la fluidité */
       transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
       position: relative;
       cursor: default;
@@ -2444,14 +2446,6 @@
         padding: 28px 18px;
       }
 
-      .portfolio-img-box {
-
-
-        height: auto;
-
-
-      }
-
       /* ── CERTIFICATIONS ── */
       .certs-container {
         grid-template-columns: 1fr;
@@ -2481,6 +2475,14 @@
 
       .portfolio-title-v4 {
         font-size: 18px;
+      }
+
+      .portfolio-img-box {
+
+
+        height: auto;
+
+
       }
 
       /* ── EXPÉRIENCE ── */
@@ -2525,7 +2527,7 @@
       }
 
       .hero-desc {
-        font-size: 12.3px;
+        font-size: 13px;
       }
 
       .btn-primary,
@@ -2725,6 +2727,30 @@
         transform: none;
       }
     }
+
+    /* FORCE L'ALIGNEMENT DES CERTIFICATIONS SUR MOBILE (UNE PAR LIGNE) */
+@media (max-width: 900px) {
+  /* 1. On force la grille à n'avoir qu'une seule colonne */
+  .certs-container {
+    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  /* 2. TRÈS IMPORTANT : On annule le décalage de la 4ème carte */
+  /* Sur ordi elle est en 'grid-column: 2', ce qui casse tout sur mobile */
+  .cert-card-v2:nth-child(4) {
+    grid-column: auto !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* 3. On s'assure que toutes les cartes prennent toute la largeur */
+  .cert-card-v2 {
+    width: 100% !important;
+  }
+}
   </style>
 
 </head>
@@ -3228,6 +3254,37 @@
           </ul>
         </div>
 
+         <!-- CATEGORIE 4 : SALES -->
+<div class="cert-card-v2">
+  <div class="cert-header-v2">
+    <div class="cert-icon-box">💼</div>
+    <h3 class="cert-category-title">Sales & Business Development</h3>
+  </div>
+
+  <div class="cert-issuer-v2">HubSpot</div>
+
+  <ul class="cert-list-v2">
+    <li class="cert-item-v2">
+      <div class="cert-name-v2">
+        HubSpot Sales Hub Software Certified
+        <span class="cert-check">✔</span>
+      </div>
+      <a href="https://app-eu1.hubspot.com/academy/achievements/7vdcr6hg/en/1/yevedo-joslin-hounkpatin/hubspot-sales-hub-software" target="_blank" class="cert-verify-link">
+        Verify the certificate
+      </a>
+    </li>
+
+    <li class="cert-item-v2">
+      <div class="cert-name-v2">
+        Inbound Sales Certified
+        <span class="cert-check">✔</span>
+      </div>
+      <a href="https://app-eu1.hubspot.com/academy/achievements/4wnlhjp5/fr/1/yevedo-joslin-hounkpatin/certification-a-la-vente-inbound" target="_blank" class="cert-verify-link">
+        Verify the certificate
+      </a>
+    </li>
+  </ul>
+</div>
       </div>
     </section>
 
